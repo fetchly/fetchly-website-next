@@ -2,10 +2,21 @@
 
 import { useState } from 'react';
 import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
+import { LogoMarquee } from '@/components/sections/LogoMarquee';
 
 export function Hero() {
   const [email, setEmail] = useState('');
+  const [error, setError] = useState(false);
+
+  const handleSubmit = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    window.location.href = `/intake/step-1?email=${encodeURIComponent(email)}`;
+  };
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -45,31 +56,50 @@ export function Hero() {
           </p>
 
           {/* Email form */}
-          <form
-            className="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-md mx-auto animate-slide-up"
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (email) {
-                window.location.href = `/intake/step-1?email=${encodeURIComponent(email)}`;
-              }
-            }}
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            />
-            <Button type="submit" size="lg">
-              Scale with Fetchly
-            </Button>
-          </form>
+          <div className="w-full max-w-md mx-auto animate-slide-up">
+            <div className="flex flex-col sm:flex-row gap-1 p-1 border border-white/15 rounded-xl bg-white/15 backdrop-blur-[12px]">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (error) setError(false);
+                }}
+                placeholder="Enter your email"
+                maxLength={256}
+                id="homepage-email-input"
+                className="flex-1 px-4 py-2 bg-transparent text-white placeholder-white/60 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 m-px"
+              />
+              <button
+                type="button"
+                onClick={handleSubmit}
+                id="homepage-email-button"
+                className="px-5 py-2 bg-primary text-gray-900 font-semibold text-sm rounded-[12px] hover:bg-primary/90 transition-colors whitespace-nowrap m-px"
+              >
+                Scale with Fetchly
+              </button>
+            </div>
+
+            {/* Error message */}
+            {error && (
+              <div
+                id="homepage-email-error"
+                className="mt-3 px-4 py-3 bg-red-100/90 border border-red-300 rounded-md text-red-700 text-sm font-medium"
+              >
+                Please enter a valid email address
+              </div>
+            )}
+          </div>
         </div>
       </Container>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent z-10" />
+
+      {/* Logo Marquee at bottom of hero */}
+      <div className="absolute bottom-8 left-0 right-0 z-20">
+        <LogoMarquee variant="transparent" />
+      </div>
     </section>
   );
 }
