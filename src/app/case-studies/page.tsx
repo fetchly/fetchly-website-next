@@ -1,0 +1,146 @@
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
+
+export const metadata: Metadata = {
+  title: 'Case Studies',
+  description:
+    'Browse case studies of innovative products we\'ve shipped, from MVP to enterprise launches.',
+};
+
+const CASE_STUDIES = [
+  {
+    title: 'VRT Sync',
+    category: 'SaaS Platform',
+    description:
+      'VRT Sync is a forward-thinking client on a greenfield initiative, building a powerful, fully integrated web platform designed to modernize property management and maintenance for HOA boards, property managers, contractors, and community members.',
+    tags: ['Web Platform', 'Property Management', 'SaaS'],
+    image: '/images/vrt-sync.png',
+  },
+  {
+    title: 'Container Alliance',
+    category: 'Digital Transformation',
+    description:
+      'Container Alliance partnered with us for a comprehensive digital transformation, resulting in a completely rebuilt CRM and a modern, conversion-focused website — all designed to streamline operations and elevate the customer experience.',
+    tags: ['CRM', 'Website', 'Digital Transformation'],
+    image: '/images/container-alliance.png',
+  },
+  {
+    title: 'Oats Overnight',
+    category: 'E-commerce',
+    description:
+      'We developed a comprehensive subscription platform for Oats Overnight that included a customized subscriber portal for easy subscription management, a member dashboard with exclusive perks and seasonal flavor access, and dynamic admin tools for efficient pick-pack shipping and inventory management. The platform featured targeted checkout development to convert customers into subscribers and collect valuable feedback, along with custom theme development to enhance the overall user experience. This solution directly supported Oats Overnight\'s growth to over 250,000 active subscribers and enabled them to achieve 94% of their e-commerce revenue through subscription orders.',
+    tags: ['Shopify', 'Subscription', 'E-commerce'],
+    image: '/images/oats-overnight.png',
+  },
+];
+
+export default function CaseStudiesPage() {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/header.avif"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gray-950/80" />
+        </div>
+        <Container className="relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-display-1 text-white mb-6">
+              Proven solutions,
+              <br />
+              <span className="text-primary">real results</span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-8">
+              Browse case studies of innovative products
+              <br />
+              we&apos;ve shipped, from MVP to enterprise launches
+            </p>
+            <Button href="/intake/step-1" size="lg">
+              Start Your Project
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      {/* Case Studies Grid */}
+      <section className="py-24 md:py-32">
+        <Container>
+          <div className="space-y-16">
+            {CASE_STUDIES.map((study, index) => (
+              <article
+                key={study.title}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+                  index % 2 === 1 ? 'lg:grid-flow-dense' : ''
+                }`}
+              >
+                {/* Image */}
+                <div
+                  className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800 ${
+                    index % 2 === 1 ? 'lg:col-start-2' : ''
+                  }`}
+                >
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-6xl font-bold text-gray-700 mb-2">{study.title}</div>
+                      <div className="text-gray-600">{study.category}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
+                  <div className="text-sm text-primary font-medium mb-2">{study.category}</div>
+                  <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+                    {study.title}
+                  </h2>
+                  <p className="text-lg text-gray-400 mb-6">{study.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {study.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 text-sm rounded-full bg-gray-800 text-gray-300 border border-white/10"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 md:py-32 bg-gray-900/50">
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-display-2 text-white mb-6">
+              Ready to be our next success story?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Let&apos;s discuss how we can help bring your vision to life with our proven development
+              process.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/intake/step-1" size="lg">
+                Get in Touch
+              </Button>
+              <Button href="/services" variant="outline" size="lg">
+                View Our Services
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </>
+  );
+}

@@ -1,0 +1,501 @@
+@import 'tailwindcss';
+
+/* ============================================
+   Tailwind CSS 4 Theme Configuration
+   ============================================ */
+
+@theme inline {
+  /* Layout */
+  --header-height: 5rem;
+
+  /* Colors - Brand */
+  --color-primary: #69E5FB;
+  --color-primary-dark: #4dd4ec;
+  --color-accent: #04FFA8;
+  --color-dark: #1F444B;
+
+  /* Colors - Neutrals */
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-muted: #737373;
+  --color-muted-foreground: #a3a3a3;
+
+  /* Colors - Grays */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-gray-950: #0a0a0a;
+
+  /* Font Family */
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Font Sizes - Display */
+  --font-size-display-1: 3.5rem;
+  --font-size-display-2: 3rem;
+
+  /* Font Sizes - Headings */
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.75rem;
+  --font-size-h4: 1.5rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h6: 1.125rem;
+
+  /* Font Sizes - Body */
+  --font-size-body: 1.125rem;
+  --font-size-body-sm: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-xs: 0.75rem;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.035em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-slide-up: slideUp 0.5s ease-out forwards;
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+/* ============================================
+   CSS Custom Properties (Runtime)
+   ============================================ */
+
+:root {
+  --color-scheme: dark;
+  color-scheme: dark;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+/* Responsive font sizing (preserved from Webflow) */
+html {
+  font-size: 1.125rem;
+  scroll-behavior: smooth;
+}
+
+@media screen and (max-width: 1920px) {
+  html {
+    font-size: calc(0.625rem + 0.417vw);
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  html {
+    font-size: calc(0.813rem + 0.208vw);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  html {
+    font-size: calc(0.749rem + 0.837vw);
+  }
+}
+
+body {
+  @apply bg-gray-950 text-white antialiased;
+  font-family: var(--font-sans);
+}
+
+/* Text Selection */
+::selection {
+  background: var(--color-primary);
+  color: #000000;
+}
+
+::-moz-selection {
+  background: var(--color-primary);
+  color: #000000;
+}
+
+/* Focus Styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-offset-2 ring-offset-gray-950;
+  --tw-ring-color: var(--color-primary);
+}
+
+/* Smooth scrolling for anchor links */
+html:has(:target) {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+
+.text-display-1 {
+  font-size: var(--font-size-display-1);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 600;
+}
+
+.text-display-2 {
+  font-size: var(--font-size-display-2);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 500;
+}
+
+/* Responsive display sizing */
+@media (max-width: 768px) {
+  .text-display-1 {
+    font-size: 2.5rem;
+  }
+  .text-display-2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-display-1 {
+    font-size: 2rem;
+  }
+  .text-display-2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* ============================================
+   Animation Keyframes
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation Utilities */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marqueeReverse 30s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================
+   Component Base Styles
+   ============================================ */
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-950;
+  --tw-ring-color: var(--color-primary);
+}
+
+.btn-primary {
+  @apply bg-[#69E5FB] text-black hover:bg-[#4dd4ec];
+}
+
+.btn-secondary {
+  @apply bg-gray-800 text-white hover:bg-gray-700;
+}
+
+.btn-outline {
+  @apply border-2 border-current bg-transparent hover:bg-white/10;
+}
+
+.btn-ghost {
+  @apply bg-transparent hover:bg-white/10;
+}
+
+/* Cards */
+.card {
+  @apply rounded-2xl bg-gray-900/50 border border-white/10;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:bg-gray-900/70 hover:border-white/20 hover:-translate-y-1;
+}
+
+/* Inputs */
+.input {
+  @apply w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3;
+  @apply text-white placeholder:text-gray-500;
+  @apply focus:border-[#69E5FB] focus:bg-white/10 focus:outline-none;
+  @apply transition-all duration-200;
+}
+
+/* ============================================
+   Layout Utilities
+   ============================================ */
+
+/* Section spacing */
+.section-padding {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+/* Container */
+.container-default {
+  @apply mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8;
+}
+
+/* ============================================
+   Scroll Lock (for mobile menu)
+   ============================================ */
+
+html.scroll-locked {
+  overflow: hidden;
+}
+
+html.scroll-locked body {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ============================================
+   Gradient Utilities
+   ============================================ */
+
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+.gradient-dark {
+  background: linear-gradient(180deg, var(--color-gray-950) 0%, var(--color-dark) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Video Background
+   ============================================ */
+
+.video-background {
+  @apply absolute inset-0 w-full h-full object-cover;
+}
+
+.video-overlay {
+  @apply absolute inset-0 bg-gray-950/60;
+}
+
+/* ============================================
+   Constrain Media
+   ============================================ */
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   Prose / Rich Text Styles
+   ============================================ */
+
+.prose {
+  @apply text-gray-300 leading-relaxed;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold text-white mt-12 mb-4;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold text-white mt-8 mb-3;
+}
+
+.prose h4 {
+  @apply text-lg font-semibold text-white mt-6 mb-2;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose a {
+  @apply text-primary underline hover:text-primary-dark transition-colors;
+}
+
+.prose strong {
+  @apply text-white font-semibold;
+}
+
+.prose-lg {
+  @apply text-lg;
+}
+
+.prose-invert {
+  @apply text-gray-300;
+}
+
+.prose-invert h2,
+.prose-invert h3,
+.prose-invert h4 {
+  @apply text-white;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to content link */
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50;
+  @apply focus:px-4 focus:py-2 focus:bg-primary focus:text-black focus:rounded-lg;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

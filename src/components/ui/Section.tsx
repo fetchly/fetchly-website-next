@@ -1,0 +1,28 @@
+import { cn } from '@/lib/utils';
+import type { SectionProps } from '@/types';
+
+const backgrounds = {
+  default: 'bg-transparent',
+  muted: 'bg-gray-900/50',
+  dark: 'bg-gray-950',
+};
+
+export function Section({ children, className, id, background = 'default' }: SectionProps) {
+  // Check if className includes custom padding or min-h to skip defaults
+  const hasCustomPadding = className?.includes('py-') || className?.includes('min-h-');
+
+  return (
+    <section
+      id={id}
+      className={cn(
+        !hasCustomPadding && 'py-16 md:py-24 lg:py-32',
+        backgrounds[background],
+        className
+      )}
+    >
+      {children}
+    </section>
+  );
+}
+
+export default Section;
