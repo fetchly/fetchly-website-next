@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
 import { Comparison } from '@/components/sections/Comparison';
 import { Testimonials } from '@/components/sections/Testimonials';
+import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { FAQAccordion } from '@/components/sections/FAQAccordion';
+import { StatsGrid } from '@/components/sections/StatsGrid';
+import { CaseStudyGrid } from '@/components/sections/CaseStudyGrid';
+import { PageHero } from '@/components/sections/PageHero';
+import { IconGrid } from '@/components/sections/IconGrid';
 
 export const metadata: Metadata = {
   title: 'Our Model',
@@ -13,43 +15,70 @@ export const metadata: Metadata = {
 };
 
 const TEAM_ROLES = [
-  { title: 'Software Architect', icon: '🏗️' },
-  { title: 'Designer', icon: '🎨' },
-  { title: 'DevOps', icon: '⚙️' },
-  { title: 'AI/Application Developer', icon: '💻' },
-  { title: 'Project Manager', icon: '📋' },
-  { title: 'Quality Assurance', icon: '✅' },
-];
-
-const PROCESS_STEPS = [
   {
-    number: '01',
-    title: 'Initial consultation and discovery',
-    description:
-      "Kickstart your journey with our Initial Consultation and Discovery — where your needs meet expert insight. Discover the path to your best solutions, tailored just for you from day one!",
+    title: 'Full-time dedicated Engineer (150 hours)',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+      </svg>
+    ),
   },
   {
-    number: '02',
-    title: 'Collaborative planning and strategy',
-    description:
-      'Supercharge your success with Collaborative Planning and Strategy — where every voice counts and every step is smarter. Harness the power of teamwork to turn goals into game-changing results!',
+    title: '50 supplemental hours FREE',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
   },
   {
-    number: '03',
-    title: 'Design and development execution',
-    description:
-      'Unlock innovation with seamless Design and Development Execution — where bold ideas become reality, fast. Experience the perfect blend of creativity and precision to bring your vision to life, from concept to launch!',
-  },
-];
-
-const CASE_STUDIES = [
-  {
-    title: 'VRT Sync',
-    description: 'Real products with real results. See how our SaaS development services move the needle.',
+    title: 'Software Architect',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+      </svg>
+    ),
   },
   {
-    title: 'Container Alliance',
-    description: 'See how our all-in-one team handles design, development, QA, and launch so your SaaS works better, looks better, and gets to market faster.',
+    title: 'Designer',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+      </svg>
+    ),
+  },
+  {
+    title: 'DevOps',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'AI or Application Developer',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Project Manager',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Quality Assurance',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+      </svg>
+    ),
   },
 ];
 
@@ -83,212 +112,55 @@ const FAQ_ITEMS = [
 
 export default function OurModelPage() {
   return (
-    <>
+    <div className="theme-light">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/header.avif"
-            alt=""
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gray-950/80" />
-        </div>
-        <Container className="relative z-10">
-          <div className="max-w-3xl">
-            <p className="text-lg md:text-xl text-primary mb-4">
-              Web, mobile &amp; data software
-            </p>
-            <h1 className="text-display-1 text-white mb-6">
-              Your dedicated development team awaits
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              At Fetchly, we provide you with top-tier developers and essential support services,
-              ensuring your project thrives. Experience a seamless collaboration that brings your
-              app vision to life.
-            </p>
-            <Button href="/intake/step-1" size="lg">
-              Get Started
-            </Button>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        title={<>Your dedicated<br />development team awaits</>}
+        subtitle="Web, mobile & data software"
+        description="At Fetchly, we provide you with top-tier developers and essential support services, ensuring your project thrives. Experience a seamless collaboration that brings your app vision to life."
+        ctaText="Get Started"
+        ctaHref="/intake/step-1"
+        secondaryText="Learn more"
+        secondaryHref="#team-model"
+        image="/images/projects.png"
+        imageAlt="Development team dashboard"
+        theme="light"
+        showBadge={false}
+      />
 
       {/* Team Model Section */}
-      <section className="py-24 md:py-32">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-display-2 text-white mb-6">
-              Smarter, Leaner, and Aligned Tech Teams
-            </h2>
-            <p className="text-xl text-gray-300">
-              Full-time dedicated engineer with 150 hours + 50 supplemental hours
-            </p>
-          </div>
-
-          {/* Team Roles Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {TEAM_ROLES.map((role) => (
-              <div
-                key={role.title}
-                className="p-6 rounded-2xl bg-gray-900/50 border border-white/10 text-center hover:border-primary/50 transition-colors"
-              >
-                <div className="text-3xl mb-3">{role.icon}</div>
-                <p className="text-sm text-gray-300">{role.title}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <IconGrid
+        title="Smarter, Leaner, and Aligned Tech Teams — All for a convenient monthly fee."
+        description="Fetchly delivers a fully-aligned, high-performing development team at a fraction of traditional agency or staff augmentation costs—on average, 50% less, according to competitive market analysis."
+        items={TEAM_ROLES}
+        columns={8}
+        size="default"
+        theme="light"
+        id="team-model"
+      />
 
       {/* Process Section */}
-      <section className="py-24 md:py-32 bg-gray-900/30">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-display-2 text-white mb-6">
-              Our seamless collaboration process
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {PROCESS_STEPS.map((step) => (
-              <div
-                key={step.number}
-                className="p-8 rounded-2xl bg-gray-900/50 border border-white/10"
-              >
-                <div className="text-4xl font-bold text-primary/30 mb-4">{step.number}</div>
-                <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
-                <p className="text-gray-400">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ProcessSteps theme="light" background="muted" />
 
       {/* About Us Section */}
-      <section className="py-24 md:py-32">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-display-2 text-white mb-6">About us</h2>
-            <p className="text-xl text-gray-300">
-              For over eight years, we have helped businesses deliver innovative platforms.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-white/10">
-              <div className="text-5xl font-bold text-primary mb-2">8</div>
-              <p className="text-gray-400">Years of history</p>
-            </div>
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-white/10">
-              <div className="text-5xl font-bold text-primary mb-2">128</div>
-              <p className="text-gray-400">Team members</p>
-            </div>
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50 border border-white/10">
-              <div className="text-5xl font-bold text-primary mb-2">103</div>
-              <p className="text-gray-400">Successfully launched platforms</p>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <StatsGrid theme="light" />
 
       {/* Comparison Section */}
-      <Comparison />
+      <Comparison theme="light" />
 
       {/* Case Studies Section */}
-      <section className="py-24 md:py-32">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-            <div>
-              <h2 className="text-display-2 text-white mb-4">What we&apos;ve built.</h2>
-              <p className="text-xl text-gray-300">
-                Build it right.
-              </p>
-            </div>
-            <Link
-              href="/case-studies"
-              className="mt-6 md:mt-0 text-primary hover:text-primary-dark transition-colors inline-flex items-center gap-2"
-            >
-              View all
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {CASE_STUDIES.map((study) => (
-              <Link
-                key={study.title}
-                href="/case-studies"
-                className="group rounded-2xl overflow-hidden bg-gray-900/50 border border-white/10 hover:border-primary/50 transition-all duration-300"
-              >
-                <div className="aspect-video relative bg-gray-800">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-600">
-                    <span className="text-lg">{study.title}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">
-                    {study.title}
-                  </h3>
-                  <p className="text-gray-400">{study.description}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <CaseStudyGrid theme="light" subtitle="Build it right." background="muted" />
 
       {/* Testimonials Section */}
-      <Testimonials />
+      <Testimonials theme="light" />
 
       {/* FAQ Section */}
-      <section className="py-24 md:py-32">
-        <Container>
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-display-2 text-white mb-4">
-                The what, the how, the why.
-              </h2>
-            </div>
-            <div className="space-y-4">
-              {FAQ_ITEMS.map((item, index) => (
-                <details
-                  key={index}
-                  className="group rounded-2xl bg-gray-900/50 border border-white/10 overflow-hidden"
-                >
-                  <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <span className="text-lg font-semibold text-white">{item.question}</span>
-                    <span className="ml-4 flex-shrink-0 text-primary">
-                      <svg
-                        className="w-6 h-6 transform transition-transform group-open:rotate-45"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 4v16m8-8H4"
-                        />
-                      </svg>
-                    </span>
-                  </summary>
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-400">{item.answer}</p>
-                  </div>
-                </details>
-              ))}
-            </div>
-            <div className="text-center mt-12">
-              <Button href="/intake/step-1" size="lg">
-                Get in Touch
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
-    </>
+      <FAQAccordion
+        title="The what, the how, the why."
+        items={FAQ_ITEMS}
+        theme="light"
+        showCTA
+      />
+    </div>
   );
 }

@@ -1,30 +1,11 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { LogoMarquee } from '@/components/sections/LogoMarquee';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { CTA } from '@/components/sections/CTA';
-
-const PROCESS_STEPS = [
-  {
-    title: 'Initial consultation and discovery',
-    description:
-      'Kickstart your journey with our Initial Consultation and Discovery — where your needs meet expert insight. Discover the path to your best solutions, tailored just for you from day one!',
-  },
-  {
-    title: 'Collaborative planning and strategy',
-    description:
-      'Supercharge your success with Collaborative Planning and Strategy — where every voice counts and every step is smarter. Harness the power of teamwork to turn goals into game-changing results!',
-  },
-  {
-    title: 'Design and development execution',
-    description:
-      'Unlock innovation with seamless Design and Development Execution — where bold ideas become reality, fast. Experience the perfect blend of creativity and precision to bring your vision to life, from concept to launch!',
-  },
-];
+import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { FeatureGrid } from '@/components/sections/FeatureGrid';
+import { FAQAccordion } from '@/components/sections/FAQAccordion';
+import { PageHero } from '@/components/sections/PageHero';
 
 const VALUE_PROPS = [
   {
@@ -92,198 +73,57 @@ const FAQ_ITEMS = [
 
 export default function SaaSHomePage() {
   return (
-    <>
-      {/* Hero Section - Two Column Layout */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div>
-              <h1 className="text-display-1 text-white mb-4">
-                Custom software development as a service
-              </h1>
-              <p className="text-lg md:text-xl text-primary mb-4">
-                Web, mobile &amp; data software
-              </p>
-              <p className="text-gray-400 text-lg mb-8">
-                Launch your SaaS with a full-stack dev team on standby. Fetchly brings everything
-                you need to bring your app to life, all wrapped in one low, month-to-month price.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button href="/intake/request" size="lg">
-                  Talk to us
-                </Button>
-                <Link
-                  href="/our-model"
-                  className="inline-flex items-center gap-2 text-white hover:text-primary transition-colors text-lg"
-                >
-                  Learn more
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="relative">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800">
-                <Image
-                  src="/images/saas-hero.png"
-                  alt="Order management dashboard"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 animate-spin-slow">
-                <Image
-                  src="/images/badge.svg"
-                  alt=""
-                  width={96}
-                  height={96}
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
-          </div>
-        </Container>
-
-        {/* Dotted texture */}
-        <Image
-          src="/images/dotted-texture.webp"
-          alt=""
-          fill
-          className="object-cover opacity-10 pointer-events-none"
-        />
-      </section>
-
-      {/* Logo Marquee */}
-      <LogoMarquee />
+    <div className="theme-light">
+      {/* Hero Section */}
+      <PageHero
+        title={<>Custom software<br />development as a service</>}
+        subtitle="Web, mobile & data software"
+        description="Launch your SaaS with a full-stack dev team on standby. Fetchly brings everything you need to bring your app to life, all wrapped in one low, month-to-month price."
+        ctaText="Talk to us"
+        ctaHref="/intake/request"
+        secondaryText="Learn more"
+        secondaryHref="/our-model"
+        image="/images/projects.png"
+        imageAlt="Projects dashboard"
+        theme="light"
+      />
 
       {/* Process Section */}
-      <section className="py-24 md:py-32">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-display-2 text-white mb-4">Our seamless collaboration process</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {PROCESS_STEPS.map((step, index) => (
-              <div
-                key={step.title}
-                className="p-8 rounded-2xl bg-gray-900/50 border border-white/10"
-              >
-                <div className="text-sm text-primary font-medium mb-4">0{index + 1}</div>
-                <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
-                <p className="text-gray-400">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ProcessSteps theme="light" />
 
       {/* Value Props Section */}
-      <section className="py-24 md:py-32 bg-gray-900/30">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-display-2 text-white mb-4">Launch your product</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              See what 7+ years in business, 120+ employees, and 100+ engineers can do for your
-              next big idea.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {VALUE_PROPS.map((prop) => (
-              <div
-                key={prop.title}
-                className="p-8 rounded-2xl bg-gray-900/50 border border-white/10"
-              >
-                <h3 className="text-xl font-semibold text-white mb-3">{prop.title}</h3>
-                <p className="text-gray-400">{prop.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <FeatureGrid
+        label="The SaaS developers behind your next app"
+        title="Launch your product with our team"
+        description="See what 7+ years in business, 120+ employees, and 100+ engineers can do for your next big idea."
+        items={VALUE_PROPS}
+        columns={3}
+        theme="light"
+        background="muted"
+      />
 
       {/* Capabilities Section */}
-      <section className="py-24 md:py-32">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold text-white mb-4">
-              We build apps so<br />you don&apos;t have to
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {CAPABILITIES.map((cap) => (
-              <div
-                key={cap.title}
-                className="p-8 rounded-2xl bg-gray-900/50 border border-white/10"
-              >
-                <h3 className="text-xl font-semibold text-white mb-3">{cap.title}</h3>
-                <p className="text-gray-400">{cap.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <FeatureGrid
+        title="We build apps so you don't have to"
+        items={CAPABILITIES}
+        columns={3}
+        theme="light"
+      />
 
       {/* Testimonials */}
-      <Testimonials />
+      <Testimonials theme="light" />
 
       {/* FAQ Section */}
-      <section className="py-24 md:py-32 bg-gray-900/30">
-        <Container>
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-display-2 text-white mb-4">The what, the how, the why.</h2>
-              <p className="text-gray-400 text-lg">
-                Get your questions answered. Our SaaS application development company is here to
-                assist you. Don&apos;t see your question? Ask away.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {FAQ_ITEMS.map((item) => (
-                <details
-                  key={item.question}
-                  className="group rounded-2xl bg-gray-900/50 border border-white/10 overflow-hidden"
-                >
-                  <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <span className="text-lg font-semibold text-white pr-4">{item.question}</span>
-                    <span className="flex-shrink-0 text-primary">
-                      <svg
-                        className="w-6 h-6 transform transition-transform group-open:rotate-45"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 4v16m8-8H4"
-                        />
-                      </svg>
-                    </span>
-                  </summary>
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-400">{item.answer}</p>
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
+      <FAQAccordion
+        title="The what, the how, the why."
+        description="Get your questions answered. Our SaaS application development company is here to assist you. Don't see your question? Ask away."
+        items={FAQ_ITEMS}
+        theme="light"
+        background="muted"
+      />
 
       {/* CTA Section */}
       <CTA />
-    </>
+    </div>
   );
 }

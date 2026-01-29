@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 const CASE_STUDIES = [
   {
     title: 'VRT Sync',
-    category: 'SaaS Platform',
+    category: 'SaaS',
     description:
       'VRT Sync is a forward-thinking client on a greenfield initiative, building a powerful, fully integrated web platform designed to modernize property management and maintenance for HOA boards, property managers, contractors, and community members.',
     tags: ['Web Platform', 'Property Management', 'SaaS'],
-    image: '/images/vrt-sync.png',
+    image: '/images/vrt-sync-thumbnail.jpg',
   },
   {
     title: 'Container Alliance',
-    category: 'Digital Transformation',
+    category: 'SaaS',
     description:
       'Container Alliance partnered with us for a comprehensive digital transformation, resulting in a completely rebuilt CRM and a modern, conversion-focused website — all designed to streamline operations and elevate the customer experience.',
     tags: ['CRM', 'Website', 'Digital Transformation'],
@@ -28,11 +28,11 @@ const CASE_STUDIES = [
   },
   {
     title: 'Oats Overnight',
-    category: 'E-commerce',
+    category: 'eCommerce',
     description:
       'We developed a comprehensive subscription platform for Oats Overnight that included a customized subscriber portal for easy subscription management, a member dashboard with exclusive perks and seasonal flavor access, and dynamic admin tools for efficient pick-pack shipping and inventory management. The platform featured targeted checkout development to convert customers into subscribers and collect valuable feedback, along with custom theme development to enhance the overall user experience. This solution directly supported Oats Overnight\'s growth to over 250,000 active subscribers and enabled them to achieve 94% of their e-commerce revenue through subscription orders.',
     tags: ['Shopify', 'Subscription', 'E-commerce'],
-    image: '/images/oats-overnight.png',
+    image: '/images/oats-case.png',
   },
 ];
 
@@ -87,12 +87,17 @@ export default function CaseStudiesPage() {
                     index % 2 === 1 ? 'lg:col-start-2' : ''
                   }`}
                 >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-6xl font-bold text-gray-700 mb-2">{study.title}</div>
-                      <div className="text-gray-600">{study.category}</div>
-                    </div>
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 text-sm font-medium rounded-full bg-gray-900/80 text-white backdrop-blur-sm">
+                      {study.category}
+                    </span>
                   </div>
+                  <Image
+                    src={study.image}
+                    alt={study.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
                 {/* Content */}
