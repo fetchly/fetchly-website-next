@@ -80,7 +80,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-24 md:py-32">
+      <section className="py-12 md:py-16">
         <Container>
           <div className="space-y-16">
             {CASE_STUDIES.map((study, index) => (
@@ -136,7 +136,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-gray-900/50">
+      <section className="py-12 md:py-16 bg-gray-900/50">
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <Heading level="display-2" className="text-white mb-6">

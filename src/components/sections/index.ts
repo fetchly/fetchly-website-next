@@ -10,7 +10,7 @@ export { ProcessSteps, DEFAULT_PROCESS_STEPS } from './ProcessSteps';
 export { FAQAccordion } from './FAQAccordion';
 export { FeatureGrid } from './FeatureGrid';
 export { StatsGrid, DEFAULT_STATS } from './StatsGrid';
-export { CaseStudyGrid, DEFAULT_CASE_STUDIES } from './CaseStudyGrid';
+export { CaseStudyGrid } from './CaseStudyGrid';
 export { PageHero } from './PageHero';
 export { IconGrid } from './IconGrid';
 

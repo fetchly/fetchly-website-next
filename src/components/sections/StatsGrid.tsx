@@ -92,7 +92,7 @@ export function StatsGrid({
   return (
     <Section
       background={background}
-      className={cn('py-24 md:py-32', className)}
+      className={cn('py-12 md:py-16', className)}
     >
       <Container>
         <SectionHeader title={title} description={description} />

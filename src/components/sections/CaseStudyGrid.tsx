@@ -23,8 +23,8 @@ export interface CaseStudyGridProps {
   title?: string;
   /** Optional subtitle */
   subtitle?: string;
-  /** Array of case studies (defaults to DEFAULT_CASE_STUDIES) */
-  items?: CaseStudy[];
+  /** Array of case studies to display */
+  items: CaseStudy[];
   /** Link to view all case studies */
   viewAllHref?: string;
   /** View all link text */
@@ -35,19 +35,6 @@ export interface CaseStudyGridProps {
   className?: string;
 }
 
-/** Default case studies used across multiple pages */
-export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
-  {
-    title: 'VRT Sync',
-    description: 'Real products with real results. See how our SaaS development services move the needle.',
-    href: '/case-studies',
-  },
-  {
-    title: 'Container Alliance',
-    description: 'See how our all-in-one team handles design, development, QA, and launch so your SaaS works better, looks better, and gets to market faster.',
-    href: '/case-studies',
-  },
-];
 
 function CaseStudyItem({
   study,
@@ -127,7 +114,7 @@ function CaseStudyItem({
 export function CaseStudyGrid({
   title = "What we've built.",
   subtitle = 'Real products with real results.',
-  items = DEFAULT_CASE_STUDIES,
+  items,
   viewAllHref = '/case-studies',
   viewAllText = 'View all',
   background = 'default',
@@ -139,7 +126,7 @@ export function CaseStudyGrid({
   return (
     <Section
       background={background}
-      className={cn('py-24 md:py-32', className)}
+      className={cn('py-12 md:py-16', className)}
     >
       <Container>
         {/* Section header */}

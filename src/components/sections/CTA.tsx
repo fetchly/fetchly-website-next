@@ -7,7 +7,7 @@ import { ScrollReveal } from '@/components/effects/ScrollReveal';
 
 export function CTA() {
   return (
-    <section className="relative py-24 md:py-32 bg-surface">
+    <section className="relative py-12 md:py-16 bg-surface">
       <Container className="relative">
         <ScrollReveal stagger={0.2} direction="up">
           <div className="max-w-2xl">

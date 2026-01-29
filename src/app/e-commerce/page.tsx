@@ -122,7 +122,7 @@ export default function EcommercePage() {
       />
 
       {/* Trust Section */}
-      <section className="py-28 bg-surface-alt">
+      <section className="py-14 bg-surface-alt">
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <Text size="sm" className="uppercase tracking-[1px] font-semibold text-foreground-muted mb-6">
@@ -144,7 +144,7 @@ export default function EcommercePage() {
       <ProcessSteps />
 
       {/* Testimonials Section */}
-      <section className="py-28 bg-surface-alt">
+      <section className="py-14 bg-surface-alt">
         <Container>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -179,7 +179,7 @@ export default function EcommercePage() {
       </section>
 
       {/* CTA Card Section - Always dark card */}
-      <section className="py-28 bg-surface">
+      <section className="py-14 bg-surface">
         <Container>
           <div className="rounded-[3rem] bg-gray-900 text-white overflow-hidden dark:bg-white/5 dark:border dark:border-border">
             <div className="grid grid-cols-1 lg:grid-cols-2">

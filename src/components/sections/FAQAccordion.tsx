@@ -175,7 +175,7 @@ export function FAQAccordion({
     return (
       <Section
         background={background}
-        className={cn('py-24 md:py-32', className)}
+        className={cn('py-12 md:py-16', className)}
       >
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-[0.75fr_1fr] gap-12 lg:gap-20">
@@ -197,7 +197,7 @@ export function FAQAccordion({
   return (
     <Section
       background={background}
-      className={cn('py-24 md:py-32', className)}
+      className={cn('py-12 md:py-16', className)}
     >
       <Container size="md">
         <SectionHeader title={title} description={description} />

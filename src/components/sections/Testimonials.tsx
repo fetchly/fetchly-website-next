@@ -49,7 +49,7 @@ export function Testimonials() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <Section id="testimonials" className="py-24 md:py-32 bg-surface-alt">
+    <Section id="testimonials" className="py-12 md:py-16 bg-surface-alt">
       <Container size="lg">
         <ScrollReveal direction="up" distance={30}>
           {/* Section label */}

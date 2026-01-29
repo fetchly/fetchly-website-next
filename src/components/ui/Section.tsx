@@ -15,7 +15,7 @@ export function Section({ children, className, id, background = 'default' }: Sec
     <section
       id={id}
       className={cn(
-        !hasCustomPadding && 'py-12 md:py-16 lg:py-20',
+        !hasCustomPadding && 'py-6 md:py-8 lg:py-10',
         backgrounds[background],
         className
       )}

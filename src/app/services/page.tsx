@@ -130,7 +130,23 @@ export default function ServicesPage() {
       <Comparison />
 
       {/* Case Studies Section */}
-      <CaseStudyGrid background="muted" />
+      <CaseStudyGrid
+        background="muted"
+        items={[
+          {
+            title: 'VRT Sync',
+            description: 'Real products with real results. See how our SaaS development services move the needle.',
+            image: '/images/vrt-sync-thumbnail.jpg',
+            href: '/case-studies',
+          },
+          {
+            title: 'Container Alliance',
+            description: 'See how our all-in-one team handles design, development, QA, and launch so your SaaS works better, looks better, and gets to market faster.',
+            image: '/images/container-alliance.png',
+            href: '/case-studies',
+          },
+        ]}
+      />
 
       {/* Testimonials Section */}
       <Testimonials />

@@ -25,7 +25,7 @@ export function LogoMarquee({ variant = 'default' }: LogoMarqueeProps) {
 
   return (
     <ScrollReveal direction="none" duration={1}>
-      <section className={`py-8 ${isTransparent ? 'bg-transparent' : 'bg-surface'} ${isTransparent ? '' : 'border-y border-border'} overflow-hidden`}>
+      <section className={`dark py-8 ${isTransparent ? 'bg-transparent' : 'bg-[#0a0a0a]'} ${isTransparent ? '' : 'border-y border-border'} overflow-hidden`}>
         <p className="text-center text-foreground-muted text-sm uppercase tracking-wider mb-8">
           Trusted by innovative companies
         </p>
@@ -43,7 +43,7 @@ export function LogoMarquee({ variant = 'default' }: LogoMarqueeProps) {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-6 md:h-8 w-auto object-contain opacity-70 dark:invert"
+                  className="h-6 md:h-8 w-auto object-contain opacity-70"
                 />
               </div>
             ))}

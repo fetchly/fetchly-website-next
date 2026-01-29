@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       {/* Header */}
-      <header className="py-24 md:py-32">
+      <header className="py-12 md:py-16">
         <Container size="sm">
           <div className="text-center">
             <Heading level="display-1" className="text-white mb-4">Privacy Policy</Heading>
