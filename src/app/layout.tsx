@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     title: 'Fetchly - We help companies build great products.',
     description: 'Fetchly provides a fully aligned, high-performing web and app development team at a fraction of the cost of traditional agencies or staff augmentation. We are the cost-effective solution for tech teams.',
   },
+  icons: {
+    icon: '/images/favicon.png',
+    shortcut: '/images/favicon.png',
+    apple: '/images/social-share.png',
+  },
   robots: {
     index: true,
     follow: true,
