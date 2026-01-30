@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef, useCallback } from 'react';
 import { TransitionLink } from '@/components/effects/TransitionLink';
 import { cn } from '@/lib/utils';
 import type { ButtonProps } from '@/types';
@@ -37,28 +36,6 @@ export function Button({
   type = 'button',
 }: ButtonProps) {
   const isIconOnly = variant === 'icon';
-  const elRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    const el = elRef.current;
-    if (!el || window.matchMedia('(pointer: coarse)').matches) return;
-    const rect = el.getBoundingClientRect();
-    const offsetX = (e.clientX - rect.left - rect.width / 2) * 0.3;
-    const offsetY = (e.clientY - rect.top - rect.height / 2) * 0.3;
-    el.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-  }, []);
-
-  const handleMouseLeave = useCallback(async () => {
-    const el = elRef.current;
-    if (!el || window.matchMedia('(pointer: coarse)').matches) return;
-    const { gsap } = await import('gsap');
-    gsap.to(el, {
-      x: 0,
-      y: 0,
-      duration: 0.5,
-      ease: 'elastic.out(1, 0.3)',
-    });
-  }, []);
 
   const classes = cn(
     'inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-200',
@@ -80,11 +57,8 @@ export function Button({
     return (
       <TransitionLink
         href={href}
-        ref={elRef as React.Ref<HTMLAnchorElement>}
         className={classes}
         data-cursor="hover"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
       >
         {content}
       </TransitionLink>
@@ -94,13 +68,10 @@ export function Button({
   return (
     <button
       type={type}
-      ref={elRef as React.Ref<HTMLButtonElement>}
       onClick={onClick}
       disabled={disabled}
       className={classes}
       data-cursor="hover"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
     >
       {content}
     </button>
