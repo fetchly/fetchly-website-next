@@ -3,10 +3,10 @@ import { Comparison } from '@/components/sections/Comparison';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FAQ } from '@/components/sections/FAQ';
-import { StatsGrid } from '@/components/sections/StatsGrid';
 import { CaseStudyGrid } from '@/components/sections/CaseStudyGrid';
 import { PageHero } from '@/components/sections/PageHero';
 import { IconGrid } from '@/components/sections/IconGrid';
+import { CASE_STUDIES } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Our Model',
@@ -84,29 +84,29 @@ const TEAM_ROLES = [
 
 const FAQ_ITEMS = [
   {
-    question: 'What services do you offer?',
+    question: 'What exactly is included in the monthly plan?',
     answer:
-      "Everything you need to turn your idea into a working product: design, development, QA, project & product management, architecture, and reporting. One team. One monthly plan. More than one less thing to worry about.",
+      'A dedicated engineer for 150 hours per month, plus 50 supplemental hours covering software architecture, design, QA, DevOps, and project management. One plan, one team, every role you need.',
   },
   {
-    question: 'How do I get started?',
+    question: 'How is this different from staff augmentation?',
     answer:
-      "Easy. Just reach out through our contact form, and we'll walk you through the next steps.",
+      "Staff aug gives you one developer. Fetchly gives you a full product team: engineering, design, QA, architecture, DevOps, and a dedicated project manager. We're coordinated and accountable for outcomes, not just hours.",
   },
   {
-    question: 'Do you support the full product lifecycle?',
+    question: 'Can I scale the engagement up or down?',
     answer:
-      "Absolutely. We're with you at every step, from due diligence and design to testing and deployment. You'll always get fast answers, data-backed decisions, and the most comprehensive planning you've seen.",
+      'Yes. Every engagement is month-to-month with no long-term contracts. Scale up when you need to move faster, scale down when things stabilize.',
   },
   {
-    question: 'How is pricing structured?',
+    question: 'How do you keep projects on track?',
     answer:
-      "We offer a low, month-to-month rate that covers everything you need. We don't nickel-and-dime you with hourly rates and surprise fees. We're 50% less than agencies and staff aug and a whole lot easier to scale.",
+      'A dedicated project manager, weekly syncs, shared task boards, and regular progress reports. Nothing slips through the cracks.',
   },
   {
-    question: 'Can the engagement be customized?',
+    question: 'What if I already have an internal team?',
     answer:
-      "Always. Every plan is built around your product, your priorities, and your pace. We change to fit what you're building.",
+      "We plug in alongside your existing team. We follow your processes, use your tools, and fill the gaps, whether that's extra engineering capacity, QA coverage, or design support.",
   },
 ];
 
@@ -140,9 +140,6 @@ export default function OurModelPage() {
       {/* Process Section */}
       <ProcessSteps background="muted" />
 
-      {/* About Us Section */}
-      <StatsGrid />
-
       {/* Comparison Section */}
       <Comparison />
 
@@ -150,20 +147,12 @@ export default function OurModelPage() {
       <CaseStudyGrid
         subtitle="Build it right."
         background="muted"
-        items={[
-          {
-            title: 'VRT Sync',
-            description: 'Real products with real results. See how our SaaS development services move the needle.',
-            image: '/images/vrt-sync-thumbnail.jpg',
-            href: '/case-studies',
-          },
-          {
-            title: 'Container Alliance',
-            description: 'See how our all-in-one team handles design, development, QA, and launch so your SaaS works better, looks better, and gets to market faster.',
-            image: '/images/container-alliance.png',
-            href: '/case-studies',
-          },
-        ]}
+        items={CASE_STUDIES.filter((s) => s.title !== 'Oats Overnight').map((s) => ({
+          title: s.title,
+          description: s.shortDescription,
+          image: s.image,
+          href: s.href,
+        }))}
       />
 
       {/* Testimonials Section */}

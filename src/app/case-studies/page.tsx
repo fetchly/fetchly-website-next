@@ -6,39 +6,13 @@ import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
 import { LogoMarquee } from '@/components/sections/LogoMarquee';
 import { assetPath } from '@/lib/utils';
+import { CASE_STUDIES } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Case Studies',
   description:
     'Browse case studies of innovative products we\'ve shipped, from MVP to enterprise launches.',
 };
-
-const CASE_STUDIES = [
-  {
-    title: 'VRT Sync',
-    category: 'SaaS',
-    description:
-      'VRT Sync is a forward-thinking client on a greenfield initiative, building a powerful, fully integrated web platform designed to modernize property management and maintenance for HOA boards, property managers, contractors, and community members.',
-    tags: ['Web Platform', 'Property Management', 'SaaS'],
-    image: '/images/vrt-sync-thumbnail.jpg',
-  },
-  {
-    title: 'Container Alliance',
-    category: 'SaaS',
-    description:
-      'Container Alliance partnered with us for a comprehensive digital transformation, resulting in a completely rebuilt CRM and a modern, conversion-focused website — all designed to streamline operations and elevate the customer experience.',
-    tags: ['CRM', 'Website', 'Digital Transformation'],
-    image: '/images/container-alliance.png',
-  },
-  {
-    title: 'Oats Overnight',
-    category: 'eCommerce',
-    description:
-      'We developed a comprehensive subscription platform for Oats Overnight that included a customized subscriber portal for easy subscription management, a member dashboard with exclusive perks and seasonal flavor access, and dynamic admin tools for efficient pick-pack shipping and inventory management. The platform featured targeted checkout development to convert customers into subscribers and collect valuable feedback, along with custom theme development to enhance the overall user experience. This solution directly supported Oats Overnight\'s growth to over 250,000 active subscribers and enabled them to achieve 94% of their e-commerce revenue through subscription orders.',
-    tags: ['Shopify', 'Subscription', 'E-commerce'],
-    image: '/images/oats-case.png',
-  },
-];
 
 export default function CaseStudiesPage() {
   return (

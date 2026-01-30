@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Comparison } from '@/components/sections/Comparison';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { StatsGrid } from '@/components/sections/StatsGrid';
 import { CaseStudyGrid } from '@/components/sections/CaseStudyGrid';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
 import { PageHero } from '@/components/sections/PageHero';
+import { CASE_STUDIES } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -72,29 +72,29 @@ const SERVICES = [
 
 const FAQ_ITEMS = [
   {
-    question: 'What do you offer for custom ecommerce development?',
+    question: 'What services does Fetchly offer?',
     answer:
-      'We handle everything: strategy, design, development, QA, Shopify integration, backend architecture, and ongoing support. We dive into due diligence, deliver data-backed planning, and manage the full build.',
+      'The full lifecycle: design, development, QA, software architecture, DevOps, project management, and marketing. Every role you need, one roof, no juggling vendors.',
   },
   {
-    question: 'Can you build my site from scratch?',
+    question: 'Do I need to hire separate vendors for design, dev, and QA?',
     answer:
-      'Yes. We design and develop fully custom ecommerce platforms or apps, end-to-end. Everything is tailored to your product, your stack, and your customers.',
+      'No. One team covers everything. Your designer, engineers, QA analysts, and project manager all work together on your product from day one.',
   },
   {
-    question: 'Do you work with Shopify?',
+    question: 'Can you work with our existing codebase or tech stack?',
     answer:
-      'Absolutely. We offer Shopify integrations, custom theme development, app connections, and feature enhancements.',
+      'Yes. We pick up existing projects all the time. We onboard to your codebase, follow your conventions, and start contributing fast.',
   },
   {
     question: 'How is pricing structured?',
     answer:
-      'We offer unique month-to-month rates that include everything you need for your online store, from design to maintenance.',
+      "Flat month-to-month rate. No hourly billing, no surprise fees. You get a full team for one predictable price, about 50% less than traditional agencies.",
   },
   {
     question: 'How do I get started?',
     answer:
-      "Just fill out our contact form. We'll schedule a quick consultation, learn about your goals, and show you exactly how our team would build your ecommerce platform.",
+      "Fill out our contact form and we'll set up a quick consultation. We'll learn about your product, scope the engagement, and show you exactly how we'd work together.",
   },
 ];
 
@@ -126,26 +126,15 @@ export default function ServicesPage() {
         id="services"
       />
 
-      {/* Comparison Section */}
-      <Comparison />
-
       {/* Case Studies Section */}
       <CaseStudyGrid
         background="muted"
-        items={[
-          {
-            title: 'VRT Sync',
-            description: 'Real products with real results. See how our SaaS development services move the needle.',
-            image: '/images/vrt-sync-thumbnail.jpg',
-            href: '/case-studies',
-          },
-          {
-            title: 'Container Alliance',
-            description: 'See how our all-in-one team handles design, development, QA, and launch so your SaaS works better, looks better, and gets to market faster.',
-            image: '/images/container-alliance.png',
-            href: '/case-studies',
-          },
-        ]}
+        items={CASE_STUDIES.filter((s) => s.title !== 'Oats Overnight').map((s) => ({
+          title: s.title,
+          description: s.shortDescription,
+          image: s.image,
+          href: s.href,
+        }))}
       />
 
       {/* Testimonials Section */}

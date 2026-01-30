@@ -65,30 +65,6 @@ export const SERVICES = [
   },
 ] as const;
 
-// FAQ items
-export const FAQ_ITEMS = [
-  {
-    question: 'What services do you offer?',
-    answer: "Everything you need to turn your idea into a working product: design, development, QA, project & product management, architecture, and reporting. One team. One monthly plan. More than one less thing to worry about.",
-  },
-  {
-    question: 'How can I get started?',
-    answer: "Easy. Just reach out through our contact form, and we'll walk you through the next steps.",
-  },
-  {
-    question: 'Do you offer support?',
-    answer: "Absolutely. We're with you at every step, from due diligence and design to testing and deployment. You'll always get fast answers, data-backed decisions, and the most comprehensive planning you've seen.",
-  },
-  {
-    question: 'What is your pricing?',
-    answer: "We offer a low, month-to-month rate that covers everything you need. We don't nickel-and-dime you with hourly rates and surprise fees. We're 50% less than agencies and staff aug and a whole lot easier to scale.",
-  },
-  {
-    question: 'Can I customize your services?',
-    answer: "Always. Every plan is built around your product, your priorities, and your pace. We change to fit what you're building.",
-  },
-] as const;
-
 // Comparison table data
 export const COMPARISON_DATA = {
   headers: ['', 'Staff Aug', 'Fetchly', 'Agency'],
@@ -130,6 +106,43 @@ export const CLIENT_LOGOS = [
   { name: 'University of Denver', src: '/images/university-denver.svg', alt: 'University of Denver' },
   { name: 'Oats Overnight', src: '/images/oats-overnight.svg', alt: 'Oats Overnight' },
   { name: 'VRTSync', src: '/images/VRTSync.svg', alt: 'VRTSync' },
+] as const;
+
+// Case studies
+export const CASE_STUDIES = [
+  {
+    title: 'VRT Sync',
+    category: 'SaaS',
+    description:
+      'VRT Sync is a forward-thinking client on a greenfield initiative, building a powerful, fully integrated web platform designed to modernize property management and maintenance for HOA boards, property managers, contractors, and community members.',
+    shortDescription:
+      'Real products with real results. See how our SaaS development services move the needle.',
+    tags: ['Web Platform', 'Property Management', 'SaaS'],
+    image: '/images/vrt-sync-thumbnail.jpg',
+    href: '/case-studies',
+  },
+  {
+    title: 'Container Alliance',
+    category: 'SaaS',
+    description:
+      'Container Alliance partnered with us for a comprehensive digital transformation, resulting in a completely rebuilt CRM and a modern, conversion-focused website — all designed to streamline operations and elevate the customer experience.',
+    shortDescription:
+      'See how our all-in-one team handles design, development, QA, and launch so your SaaS works better, looks better, and gets to market faster.',
+    tags: ['CRM', 'Website', 'Digital Transformation'],
+    image: '/images/container-alliance.png',
+    href: '/case-studies',
+  },
+  {
+    title: 'Oats Overnight',
+    category: 'eCommerce',
+    description:
+      'We developed a comprehensive subscription platform for Oats Overnight that included a customized subscriber portal for easy subscription management, a member dashboard with exclusive perks and seasonal flavor access, and dynamic admin tools for efficient pick-pack shipping and inventory management. The platform featured targeted checkout development to convert customers into subscribers and collect valuable feedback, along with custom theme development to enhance the overall user experience. This solution directly supported Oats Overnight\'s growth to over 250,000 active subscribers and enabled them to achieve 94% of their e-commerce revenue through subscription orders.',
+    shortDescription:
+      'See how we built the subscription platform behind 250K+ active subscribers and 94% subscription revenue.',
+    tags: ['Shopify', 'Subscription', 'E-commerce'],
+    image: '/images/oats-case.png',
+    href: '/case-studies',
+  },
 ] as const;
 
 // Testimonials

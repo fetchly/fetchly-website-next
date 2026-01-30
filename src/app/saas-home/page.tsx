@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { CTA } from '@/components/sections/CTA';
-import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
 import { FAQ } from '@/components/sections/FAQ';
 import { PageHero } from '@/components/sections/PageHero';
@@ -46,29 +45,29 @@ const CAPABILITIES = [
 
 const FAQ_ITEMS = [
   {
-    question: 'What services do you offer?',
+    question: 'What kind of SaaS products do you build?',
     answer:
-      'Everything you need to turn your idea into a working product: design, development, QA, project & product management, architecture, and reporting. One team. One monthly plan. More than one less thing to worry about.',
+      'Dashboards, multi-tenant platforms, internal tools, customer portals. If it runs in a browser or on a phone and serves multiple users, we build it.',
   },
   {
-    question: 'How can I get started?',
+    question: 'Do you handle both frontend and backend development?',
     answer:
-      "Easy. Just reach out through our contact form, and we'll walk you through the next steps.",
+      'Yes. We cover the full stack: frontend UI, backend APIs, database architecture, DevOps, and infrastructure. One team, end to end.',
   },
   {
-    question: 'Do you offer support?',
+    question: 'Can you take over a product that another team started?',
     answer:
-      "Absolutely. We're with you at every step, from due diligence and design to testing and deployment. You'll always get fast answers, data-backed decisions, and the most comprehensive planning you've seen.",
+      "Yes. We onboard to existing codebases, audit what's there, and pick up where the last team left off. No restart required.",
   },
   {
-    question: 'What is your pricing?',
+    question: 'How does your pricing compare to hiring in-house?',
     answer:
-      "We offer a low, month-to-month rate that covers everything you need. We don't nickel-and-dime you with hourly rates and surprise fees. We're 50% less than agencies and staff aug and a whole lot easier to scale.",
+      "About 50% less. You get a full product team for one monthly rate: engineering, design, QA, DevOps, and project management. No recruiting, benefits, or overhead costs.",
   },
   {
-    question: 'Can I customize your services?',
+    question: 'What does getting started look like?',
     answer:
-      "Always. Every plan is built around your product, your priorities, and your pace. We change to fit what you're building.",
+      "Fill out our contact form and we'll schedule a discovery call. We scope your project, define the team structure, and get moving, usually within a week or two.",
   },
 ];
 
@@ -112,9 +111,6 @@ export default function SaaSHomePage() {
           </>
         }
       />
-
-      {/* Process Section */}
-      <ProcessSteps />
 
       {/* Value Props Section */}
       <FeatureGrid
