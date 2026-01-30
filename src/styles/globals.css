@@ -263,6 +263,11 @@ body {
   line-height: 1.5;
 }
 
+/* Page hero title — 80% of display-1 */
+.page-hero-title {
+  font-size: 3.825rem;
+}
+
 /* Responsive display sizing */
 @media (max-width: 768px) {
   .text-display-1 {
@@ -277,6 +282,9 @@ body {
   .text-h2 {
     font-size: 1.5rem;
   }
+  .page-hero-title {
+    font-size: 2.55rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -288,6 +296,9 @@ body {
   }
   .text-h1 {
     font-size: 1.5rem;
+  }
+  .page-hero-title {
+    font-size: 1.9125rem;
   }
   .text-h2 {
     font-size: 1.25rem;

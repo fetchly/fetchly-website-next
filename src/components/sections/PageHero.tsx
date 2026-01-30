@@ -130,13 +130,13 @@ export function PageHero({
                 as="h1"
                 splitBy="words"
                 trigger="mount"
-                className="text-display-1 font-bold leading-[1.05] tracking-tight mb-4 text-foreground"
+                className="text-display-1 page-hero-title font-bold leading-[1.05] tracking-tight mb-4 text-foreground"
                 animation={{ duration: 0.7, stagger: 0.05, ease: 'power4.out', y: 45 }}
               >
                 {title as string}
               </SplitText>
             ) : (
-              <h1 className="text-display-1 font-bold leading-[1.05] tracking-tight mb-4 text-foreground">
+              <h1 className="text-display-1 page-hero-title font-bold leading-[1.05] tracking-tight mb-4 text-foreground">
                 {title}
               </h1>
             )}
@@ -187,7 +187,7 @@ export function PageHero({
           {/* Right Image */}
           {image && (
             <div ref={imageRef} className="relative z-10" style={{ opacity: 0 }}>
-              <Parallax speed={0.15}>
+              <Parallax speed={0.5}>
                 <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden">
                   <Image
                     src={image}
@@ -200,16 +200,14 @@ export function PageHero({
               </Parallax>
               {imageOverlay}
               {showBadge && (
-                <Parallax speed={-0.1}>
-                  <div className="absolute -top-4 -right-4 w-32 h-32">
-                    <Image
-                      src={badgeImage}
-                      alt=""
-                      width={127}
-                      height={127}
-                      className="w-full h-full animate-spin-slow"
-                    />
-                  </div>
+                <Parallax speed={-0.3} className="absolute -top-4 -right-4 w-32 h-32 z-20">
+                  <Image
+                    src={badgeImage}
+                    alt=""
+                    width={127}
+                    height={127}
+                    className="w-full h-full animate-spin-slow"
+                  />
                 </Parallax>
               )}
             </div>
@@ -222,7 +220,7 @@ export function PageHero({
         src="/images/dotted-texture.webp"
         alt=""
         fill
-        className="object-cover pointer-events-none opacity-20"
+        className="object-cover pointer-events-none opacity-[0.14]"
       />
     </section>
   );

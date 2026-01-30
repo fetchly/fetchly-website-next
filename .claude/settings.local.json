@@ -9,7 +9,22 @@
       "WebFetch(domain:jackwhiting.co.uk)",
       "WebFetch(domain:jianliao.github.io)",
       "WebFetch(domain:dev.to)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(NEXT_PUBLIC_BASE_PATH=/fetchly-website npm run build:*)",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:www.absoluteweb.com)",
+      "WebFetch(domain:swanky.co.uk)",
+      "WebFetch(domain:eastsideco.com)",
+      "WebFetch(domain:www.simplistic.com)",
+      "WebFetch(domain:elogic.co)",
+      "WebFetch(domain:diffagency.com)",
+      "WebFetch(domain:www.cake.agency)",
+      "WebFetch(domain:wemakewebsites.com)",
+      "WebFetch(domain:electriceye.io)",
+      "WebFetch(domain:www.pixelunion.net)",
+      "WebFetch(domain:www.loungelizard.com)",
+      "WebFetch(domain:www.fuelmade.com)",
+      "Bash(python3:*)"
     ]
   }
 }

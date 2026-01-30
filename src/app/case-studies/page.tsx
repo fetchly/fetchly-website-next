@@ -84,19 +84,13 @@ export default function CaseStudiesPage() {
       <section className="py-12 md:py-16">
         <Container>
           <div className="space-y-16">
-            {CASE_STUDIES.map((study, index) => (
+            {CASE_STUDIES.map((study) => (
               <article
                 key={study.title}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-dense' : ''
-                }`}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
               >
                 {/* Image */}
-                <div
-                  className={`relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800 ${
-                    index % 2 === 1 ? 'lg:col-start-2' : ''
-                  }`}
-                >
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800">
                   <div className="absolute top-4 left-4 z-10">
                     <span className="px-3 py-1 text-sm font-medium rounded-full bg-gray-900/80 text-white backdrop-blur-sm">
                       {study.category}
@@ -111,7 +105,7 @@ export default function CaseStudiesPage() {
                 </div>
 
                 {/* Content */}
-                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
+                <div>
                   <Text size="sm" className="text-primary font-medium mb-2">{study.category}</Text>
                   <Heading level="h1" className="text-white mb-4">
                     {study.title}

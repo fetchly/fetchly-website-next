@@ -94,7 +94,7 @@ export function Hero() {
 
       {/* Dotted texture overlay */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-[0.14]"
         style={{
           backgroundImage: `url('${assetPath("/images/dotted-texture.webp")}')`,
           backgroundSize: 'cover',

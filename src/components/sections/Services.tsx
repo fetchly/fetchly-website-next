@@ -78,7 +78,7 @@ export function Services() {
                   alt=""
                   width={4096}
                   height={4096}
-                  className="absolute -top-8 -right-8 w-full h-full object-cover opacity-30 pointer-events-none"
+                  className="absolute -top-8 -right-8 w-full h-full object-cover opacity-[0.21] pointer-events-none"
                 />
               </div>
             </div>

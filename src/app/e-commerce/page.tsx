@@ -10,6 +10,7 @@ import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
 import { FAQAccordion } from '@/components/sections/FAQAccordion';
 import { PageHero } from '@/components/sections/PageHero';
+import { ParallaxSection } from '@/components/effects/ParallaxSection';
 
 const FEATURES = [
   {
@@ -20,7 +21,7 @@ const FEATURES = [
   {
     title: 'Feature development that ships fast',
     description:
-      "No more 'we'll get to it'. You get weekly mobile test builds and live web links so you can see real progress fast.",
+      'You get weekly test builds and live preview links so you can track real progress throughout development.',
   },
   {
     title: 'Testing & polishing that catches it all',
@@ -28,9 +29,9 @@ const FEATURES = [
       'We break it before your users do. Every feature goes through rigorous testing and refinement for a high-performing launch.',
   },
   {
-    title: 'Maintenance that handles the 3AM stuff',
+    title: 'Ongoing maintenance and support',
     description:
-      'We catch bugs before your customers do and fix them before they cost you sales.',
+      'We catch issues before your customers do and resolve them before they cost you revenue.',
   },
 ];
 
@@ -43,7 +44,7 @@ const CAPABILITIES = [
   {
     title: 'UI/UX that keeps shoppers clicking',
     description:
-      "We craft ecommerce interfaces that guide customers to stay and 'Buy Now'.",
+      'We craft ecommerce interfaces that guide customers from browsing to checkout.',
   },
   {
     title: 'Shopify without limitations',
@@ -59,19 +60,19 @@ const FAQ_ITEMS = [
       'We handle everything: strategy, design, development, QA, Shopify integration, backend architecture, and ongoing support. We dive into due diligence, deliver data-backed planning, and manage the full build.',
   },
   {
-    question: 'Can you build my site from scratch?',
+    question: 'Do you handle Shopify migrations and re-platforms?',
     answer:
-      'Yes. We design and develop fully custom ecommerce platforms or apps, end-to-end. Everything is tailored to your product, your stack, and your customers.',
+      'Yes. We migrate existing stores to Shopify and Shopify Plus, handling data migration, custom theme development, and app integrations with zero downtime.',
   },
   {
-    question: 'Do you work with Shopify?',
+    question: 'What Shopify services do you offer?',
     answer:
-      'Absolutely. We offer Shopify integrations, custom theme development, app connections, and feature enhancements.',
+      'Custom theme development, Shopify Plus builds, app integrations, headless commerce, performance optimization, and ongoing store management.',
   },
   {
     question: 'How is pricing structured?',
     answer:
-      'We offer unique month-to-month rates that include everything you need for your online store, from design to maintenance.',
+      'We work on a flexible month-to-month basis. Every engagement includes design, development, QA, and ongoing support. No long-term contracts required.',
   },
   {
     question: 'How do I get started?',
@@ -85,9 +86,9 @@ export default function EcommercePage() {
     <>
       {/* Hero Section */}
       <PageHero
-        title={<>We help build<br />eCommerce brands</>}
-        subtitle="We build and manage the technical side, so you can focus on running your brand."
-        description="We strategize, design, build, test, launch, and manage custom online stores, all at a low, month-to-month price. From UX to backend, every site and app we build is meticulously optimized to drive revenue."
+        title="Shopify, Built for Brands That Scale"
+        subtitle="Custom Shopify design, development, and conversion optimization for brands going further."
+        description="We strategize, design, build, test, launch, and manage custom Shopify stores on a flexible month-to-month basis. From UX to backend, every store we build is optimized to drive revenue."
         ctaText="Talk to us"
         ctaHref="/intake/request"
         secondaryText="Learn more"
@@ -97,78 +98,94 @@ export default function EcommercePage() {
         badgeImage="/images/badge-ecommerce.svg"
       />
 
-      {/* Trust Section */}
-      <section className="py-14 bg-surface-alt">
-        <Container>
-          <div className="max-w-4xl mx-auto text-center">
-            <Text size="sm" className="uppercase tracking-[1px] font-semibold text-foreground-muted mb-6">
-              The best web development company
-            </Text>
-            <Heading level="display-2" className="text-foreground mb-6">
-              Trusted by brands that don&apos;t want to build another team.
-            </Heading>
-            <Text size="lg" className="text-foreground-muted">
-              For years, many clients have relied on Fetchly as their only outside dev team. Why? Fetchly gives you more than just code. You get a full-stack team, a tightly managed process, and a smarter way to build and scale your store.
-              <br />
-              <strong className="text-foreground">70+ applications launched. 7+ years strong.</strong>
-            </Text>
-          </div>
-        </Container>
-      </section>
+      {/* Trust Section — fades as it scrolls away */}
+      <ParallaxSection speed={0.8} fadeOut>
+        <section className="py-14 bg-surface-alt">
+          <Container>
+            <div className="max-w-4xl mx-auto text-center">
+              <Text size="sm" className="uppercase tracking-[1px] font-semibold text-foreground-muted mb-6">
+                Shopify Plus Partner Agency
+              </Text>
+              <Heading level="display-2" className="text-foreground mb-6">
+                Trusted by brands that don&apos;t want to build another team.
+              </Heading>
+              <Text size="lg" className="text-foreground-muted">
+                For years, many clients have relied on Fetchly as their only outside dev team. Why? Fetchly gives you more than just code. You get a full-stack team, a tightly managed process, and a smarter way to build and scale your store.
+                <br />
+                <strong className="text-foreground">70+ stores launched. 7+ years strong.</strong>
+              </Text>
+            </div>
+          </Container>
+        </section>
+      </ParallaxSection>
 
       {/* Process Section */}
       <ProcessSteps />
 
-      {/* Testimonials Section */}
-      <section className="py-14 bg-surface-alt">
-        <Container>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <Text size="sm" className="uppercase tracking-[1px] font-semibold text-foreground-muted mb-4">
-                What our clients say
-              </Text>
-              <Heading level="display-2" className="text-foreground">
-                Trusted by industry leaders
-              </Heading>
-            </div>
-            {/* Featured testimonial */}
-            <div className="grid grid-cols-1 md:grid-cols-[1fr,240px] gap-8 md:gap-12 p-8 md:p-12 rounded-[1.25rem] bg-surface-card border border-border">
-              <blockquote>
-                <Text size="xl" className="text-foreground leading-relaxed italic">
-                  &ldquo;I was, without exaggerating, blown away by the quality, appearance, and functionality of the app.&rdquo;
+      {/* Featured Case Study — slower scroll with fade */}
+      <ParallaxSection speed={0.8} fadeOut>
+        <section className="py-14 bg-surface-alt">
+          <Container>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <Text size="sm" className="uppercase tracking-[1px] font-semibold text-foreground-muted mb-4">
+                  Featured case study
                 </Text>
-              </blockquote>
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <Text className="font-semibold text-foreground">Douglas H. Clements, Ph.D</Text>
-                  <Text size="sm" className="text-foreground-muted mt-1">Distinguished Professor and Kennedy Endowed Chair University of Denver</Text>
+                <Heading level="display-2" className="text-foreground">
+                  Oats Overnight: 250K+ subscribers. 94% subscription revenue.
+                </Heading>
+              </div>
+              <div className="p-8 md:p-12 rounded-[1.25rem] bg-surface-card border border-border">
+                <Text size="xl" className="text-foreground leading-relaxed">
+                  We built the subscription platform, custom checkout, and Shopify theme that helped Oats Overnight turn first-time buyers into a quarter-million active subscribers.
+                </Text>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 pt-8 border-t border-border items-center">
+                  <div>
+                    <Heading level="h4" className="text-foreground mb-2">
+                      Read the case study
+                    </Heading>
+                    <Text size="sm" className="text-foreground-muted mb-4">
+                      See how we helped Oats Overnight build and scale their subscription-first Shopify store.
+                    </Text>
+                    <a
+                      href="/case-studies"
+                      className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
+                    >
+                      View full case study
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  </div>
+                  <div className="flex md:justify-end">
+                    <Image
+                      src="/images/oats-overnight.svg"
+                      alt="Oats Overnight"
+                      width={120}
+                      height={36}
+                      className="w-24 h-auto dark:invert shrink-0"
+                    />
+                  </div>
                 </div>
-                <Image
-                  src="/images/university-denver.svg"
-                  alt="University of Denver"
-                  width={122}
-                  height={36}
-                  className="w-20 h-auto dark:invert shrink-0"
-                />
               </div>
             </div>
-          </div>
-        </Container>
-      </section>
+          </Container>
+        </section>
+      </ParallaxSection>
 
-      {/* CTA Card Section - Always dark card */}
+      {/* CTA Card Section */}
       <section className="py-14 bg-surface">
         <Container>
           <div className="rounded-[3rem] bg-gray-900 text-white overflow-hidden dark:bg-white/5 dark:border dark:border-border">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-12 lg:p-16 flex flex-col justify-center">
                 <Heading level="display-2" className="text-white mb-6">
-                  Ready to build
+                  Ready to grow
                   <br />
-                  something amazing?
+                  your store?
                 </Heading>
                 <Text size="lg" className="text-gray-400 mb-8">
-                  Get a high-performing e-commerce platform that&apos;s designed, built, and managed by a team that does this every day.
+                  Get a high-performing Shopify store designed, built, and managed by a team that&apos;s launched over 70.
                 </Text>
                 <div>
                   <Button href="/intake/step-1" size="lg" variant="primary">
@@ -189,24 +206,28 @@ export default function EcommercePage() {
         </Container>
       </section>
 
-      {/* Features Section */}
-      <FeatureGrid
-        label="The only toolkit you'll ever need"
-        title="Cross-functional eCommerce team that can help you rapidly scale your DTC Brand."
-        items={FEATURES}
-        columns={2}
-        background="muted"
-      />
+      {/* Features Section — scrolls slightly slower for depth */}
+      <ParallaxSection speed={0.85}>
+        <FeatureGrid
+          label="How we work"
+          title="A cross-functional eCommerce team built to scale your brand."
+          items={FEATURES}
+          columns={2}
+          background="muted"
+        />
+      </ParallaxSection>
 
-      {/* Capabilities Section */}
-      <FeatureGrid
-        label="Your eCommerce development experts"
-        title="Built to sell. Engineered to scale."
-        description="We design and develop ecommerce platforms with the architecture, performance, and flexibility to grow as you do."
-        items={CAPABILITIES}
-        columns={3}
-        centerText
-      />
+      {/* Capabilities Section — scrolls at normal speed, overtakes Features */}
+      <ParallaxSection speed={1}>
+        <FeatureGrid
+          label="Your eCommerce development experts"
+          title="Built to sell. Engineered to scale."
+          description="We design and develop ecommerce platforms with the architecture, performance, and flexibility to grow as you do."
+          items={CAPABILITIES}
+          columns={3}
+          centerText
+        />
+      </ParallaxSection>
 
       {/* FAQ Section */}
       <FAQAccordion
