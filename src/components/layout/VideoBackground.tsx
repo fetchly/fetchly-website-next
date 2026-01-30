@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn, assetPath } from '@/lib/utils';
 
 interface VideoBackgroundProps {
   src: string;
@@ -27,11 +27,11 @@ export function VideoBackground({
         muted
         loop
         playsInline
-        poster={poster}
+        poster={poster ? assetPath(poster) : undefined}
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src={webmSrc} type="video/webm" />
-        <source src={src} type="video/mp4" />
+        <source src={assetPath(webmSrc)} type="video/webm" />
+        <source src={assetPath(src)} type="video/mp4" />
       </video>
       <div
         className={cn(

@@ -1,6 +1,14 @@
 import { type ClassValue, clsx } from 'clsx';
 import { extendTailwindMerge } from 'tailwind-merge';
 
+/**
+ * Prefix a public asset path with basePath. Only needed for plain HTML elements
+ * (video, source, img, CSS backgrounds) — next/image and next/link handle this automatically.
+ */
+export function assetPath(path: string): string {
+  return `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${path}`;
+}
+
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {

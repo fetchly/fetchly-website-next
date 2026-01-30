@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ScrollReveal } from '@/components/effects/ScrollReveal';
 
 // Client logos extracted from original Webflow design
@@ -39,10 +40,11 @@ export function LogoMarquee({ variant = 'default' }: LogoMarqueeProps) {
                 key={`${logo.alt}-${index}`}
                 className="flex items-center justify-center px-6 md:px-10"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={logo.src}
                   alt={logo.alt}
+                  width={120}
+                  height={32}
                   className="h-6 md:h-8 w-auto object-contain opacity-70"
                 />
               </div>

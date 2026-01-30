@@ -6,7 +6,7 @@ import { LogoMarquee } from '@/components/sections/LogoMarquee';
 import { SplitText } from '@/components/effects/SplitText';
 import { Text } from '@/components/ui/Text';
 import { Parallax } from '@/components/effects/Parallax';
-
+import { assetPath } from '@/lib/utils';
 export function Hero() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState(false);
@@ -83,11 +83,11 @@ export function Hero() {
           muted
           loop
           playsInline
-          poster="/videos/abstract-blue-poster.jpg"
+          poster={assetPath("/videos/abstract-blue-poster.jpg")}
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/videos/abstract-blue.webm" type="video/webm" />
-          <source src="/videos/abstract-blue.mp4" type="video/mp4" />
+          <source src={assetPath("/videos/abstract-blue.webm")} type="video/webm" />
+          <source src={assetPath("/videos/abstract-blue.mp4")} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/50 to-gray-950" />
       </div>
@@ -96,7 +96,7 @@ export function Hero() {
       <div
         className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage: "url('/images/dotted-texture.webp')",
+          backgroundImage: `url('${assetPath("/images/dotted-texture.webp")}')`,
           backgroundSize: 'cover',
         }}
       />

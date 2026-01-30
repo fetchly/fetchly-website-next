@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
 import { LogoMarquee } from '@/components/sections/LogoMarquee';
+import { assetPath } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Case Studies',
@@ -51,11 +52,11 @@ export default function CaseStudiesPage() {
             muted
             loop
             playsInline
-            poster="/videos/case-studies-poster.jpg"
+            poster={assetPath("/videos/case-studies-poster.jpg")}
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/videos/case-studies.webm" type="video/webm" />
-            <source src="/videos/case-studies.mp4" type="video/mp4" />
+            <source src={assetPath("/videos/case-studies.webm")} type="video/webm" />
+            <source src={assetPath("/videos/case-studies.mp4")} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gray-950/60" />
         </div>

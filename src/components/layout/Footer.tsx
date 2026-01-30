@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
+import { assetPath } from '@/lib/utils';
 
 const PAGES_LINKS = [
   { label: 'eComm', href: '/e-commerce' },
@@ -26,11 +27,11 @@ export function Footer() {
           muted
           loop
           playsInline
-          poster="/videos/abstract-glass-poster.jpg"
+          poster={assetPath("/videos/abstract-glass-poster.jpg")}
           className="w-full h-full object-cover"
         >
-          <source src="/videos/abstract-glass.mp4" type="video/mp4" />
-          <source src="/videos/abstract-glass.webm" type="video/webm" />
+          <source src={assetPath("/videos/abstract-glass.mp4")} type="video/mp4" />
+          <source src={assetPath("/videos/abstract-glass.webm")} type="video/webm" />
         </video>
       </div>
 
@@ -42,11 +43,12 @@ export function Footer() {
           <div className="flex flex-col justify-between max-w-sm">
             <div>
               <Link href="/">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/fetchly-logo.svg"
                   alt="Fetchly"
-                  style={{ height: '72px', width: 'auto' }}
+                  width={180}
+                  height={72}
+                  className="h-[72px] w-auto"
                 />
               </Link>
             </div>

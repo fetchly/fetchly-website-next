@@ -6,7 +6,7 @@ import { Section } from '@/components/ui/Section';
 import { Text } from '@/components/ui/Text';
 import { ScrollReveal } from '@/components/effects/ScrollReveal';
 import { Parallax } from '@/components/effects/Parallax';
-
+import { assetPath } from '@/lib/utils';
 export function Bento() {
   return (
     <Section>
@@ -35,11 +35,11 @@ export function Bento() {
                     muted
                     loop
                     playsInline
-                    poster="/videos/13s-poster.jpg"
+                    poster={assetPath("/videos/13s-poster.jpg")}
                     className="absolute inset-0 w-full h-full object-cover saturate-[0.7] brightness-90 group-hover:saturate-100 group-hover:brightness-110 transition-all duration-300"
                   >
-                    <source src="/videos/13s.webm" type="video/webm" />
-                    <source src="/videos/13s.mp4" type="video/mp4" />
+                    <source src={assetPath("/videos/13s.webm")} type="video/webm" />
+                    <source src={assetPath("/videos/13s.mp4")} type="video/mp4" />
                   </video>
                 </div>
                 {/* Tapp Image */}
