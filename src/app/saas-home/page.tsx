@@ -5,7 +5,7 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { CTA } from '@/components/sections/CTA';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
-import { FAQAccordion } from '@/components/sections/FAQAccordion';
+import { FAQ } from '@/components/sections/FAQ';
 import { PageHero } from '@/components/sections/PageHero';
 
 const VALUE_PROPS = [
@@ -137,11 +137,10 @@ export default function SaaSHomePage() {
       <Testimonials />
 
       {/* FAQ Section */}
-      <FAQAccordion
-        title="The what, the how, the why."
-        description="Get your questions answered. Our SaaS application development company is here to assist you. Don't see your question? Ask away."
+      <FAQ
         items={FAQ_ITEMS}
-        background="muted"
+        title="The what, the how, the why."
+        label="FAQ"
       />
 
       {/* CTA Section */}

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Comparison } from '@/components/sections/Comparison';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
-import { FAQAccordion } from '@/components/sections/FAQAccordion';
+import { FAQ } from '@/components/sections/FAQ';
 import { StatsGrid } from '@/components/sections/StatsGrid';
 import { CaseStudyGrid } from '@/components/sections/CaseStudyGrid';
 import { PageHero } from '@/components/sections/PageHero';
@@ -170,10 +170,10 @@ export default function OurModelPage() {
       <Testimonials />
 
       {/* FAQ Section */}
-      <FAQAccordion
-        title="The what, the how, the why."
+      <FAQ
         items={FAQ_ITEMS}
-        showCTA
+        title="The what, the how, the why."
+        label="FAQ"
       />
     </>
   );

@@ -7,7 +7,6 @@ export { Testimonials } from './Testimonials';
 export { FAQ } from './FAQ';
 export { SectionHeader } from './SectionHeader';
 export { ProcessSteps, DEFAULT_PROCESS_STEPS } from './ProcessSteps';
-export { FAQAccordion } from './FAQAccordion';
 export { FeatureGrid } from './FeatureGrid';
 export { StatsGrid, DEFAULT_STATS } from './StatsGrid';
 export { CaseStudyGrid } from './CaseStudyGrid';
@@ -16,7 +15,6 @@ export { IconGrid } from './IconGrid';
 
 export type { SectionHeaderProps } from './SectionHeader';
 export type { ProcessStep, ProcessStepsProps } from './ProcessSteps';
-export type { FAQItem, FAQAccordionProps } from './FAQAccordion';
 export type { FeatureItem, FeatureGridProps } from './FeatureGrid';
 export type { StatItem, StatsGridProps } from './StatsGrid';
 export type { CaseStudy, CaseStudyGridProps } from './CaseStudyGrid';

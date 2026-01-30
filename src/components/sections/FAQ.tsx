@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
-import { FAQ_ITEMS } from '@/lib/constants';
 import { ScrollReveal } from '@/components/effects/ScrollReveal';
 import { cn } from '@/lib/utils';
 
@@ -18,7 +17,13 @@ function getDuration(answer: string) {
   return answer.split(/\s+/).length * MS_PER_WORD;
 }
 
-export function FAQ() {
+export interface FAQProps {
+  items: readonly { question: string; answer: string }[];
+  title: string;
+  label: string;
+}
+
+export function FAQ({ items, title, label }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number>(0);
   const [progress, setProgress] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -28,7 +33,7 @@ export function FAQ() {
   const timerRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
 
-  const totalItems = FAQ_ITEMS.length;
+  const totalItems = items.length;
 
   // Observe section visibility
   useEffect(() => {
@@ -65,7 +70,7 @@ export function FAQ() {
 
     const tick = (now: number) => {
       const elapsed = now - startTimeRef.current;
-      const duration = getDuration(FAQ_ITEMS[openIndex].answer);
+      const duration = getDuration(items[openIndex].answer);
       const pct = Math.min(elapsed / duration, 1);
       setProgress(pct);
 
@@ -102,9 +107,9 @@ export function FAQ() {
       <Container size="md">
         <ScrollReveal direction="up" distance={30}>
           <div className="text-center mb-16">
-            <Badge className="mb-4">FAQ</Badge>
+            <Badge className="mb-4">{label}</Badge>
             <Heading level="display-2" className="text-foreground mb-4">
-              FAQs
+              {title}
             </Heading>
           </div>
         </ScrollReveal>
@@ -112,7 +117,7 @@ export function FAQ() {
         <div ref={sectionRef}>
           <ScrollReveal stagger={0.1} direction="up" distance={30}>
             <div>
-              {FAQ_ITEMS.map((item, index) => {
+              {items.map((item, index) => {
                 const isOpen = openIndex === index;
                 return (
                   <div

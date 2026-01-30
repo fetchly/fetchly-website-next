@@ -8,7 +8,7 @@ import { Text } from '@/components/ui/Text';
 import { CTA } from '@/components/sections/CTA';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
-import { FAQAccordion } from '@/components/sections/FAQAccordion';
+import { FAQ } from '@/components/sections/FAQ';
 import { PageHero } from '@/components/sections/PageHero';
 import { ParallaxSection } from '@/components/effects/ParallaxSection';
 
@@ -230,11 +230,10 @@ export default function EcommercePage() {
       </ParallaxSection>
 
       {/* FAQ Section */}
-      <FAQAccordion
-        title="See if we have what you need."
+      <FAQ
         items={FAQ_ITEMS}
-        background="muted"
-        layout="two-column"
+        title="See if we have what you need."
+        label="FAQ"
       />
 
       {/* Final CTA Section */}

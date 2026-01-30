@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Comparison } from '@/components/sections/Comparison';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { FAQAccordion } from '@/components/sections/FAQAccordion';
+import { FAQ } from '@/components/sections/FAQ';
 import { StatsGrid } from '@/components/sections/StatsGrid';
 import { CaseStudyGrid } from '@/components/sections/CaseStudyGrid';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
@@ -152,11 +152,10 @@ export default function ServicesPage() {
       <Testimonials />
 
       {/* FAQ Section */}
-      <FAQAccordion
-        title="FAQ"
-        description="Have questions? We've got answers. If you don't see yours, reach out below."
+      <FAQ
         items={FAQ_ITEMS}
-        showCTA
+        title="FAQ"
+        label="FAQ"
       />
     </>
   );
