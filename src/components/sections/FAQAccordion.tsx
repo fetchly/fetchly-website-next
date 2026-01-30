@@ -48,10 +48,10 @@ function FAQItemControlled({
   onToggle: () => void;
 }) {
   return (
-    <div className="rounded-2xl overflow-hidden bg-surface-card border border-border">
+    <div className="border-b border-border/60">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-overlay"
+        className="w-full flex items-center justify-between py-5 text-left"
         aria-expanded={isOpen}
       >
         <Text
@@ -63,12 +63,12 @@ function FAQItemControlled({
         </Text>
         <span
           className={cn(
-            'flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full transition-transform duration-200 text-primary',
-            isOpen && 'rotate-180'
+            'flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-300 text-foreground-muted',
+            isOpen && 'rotate-45'
           )}
         >
           <svg
-            className="w-6 h-6"
+            className="w-5 h-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -78,18 +78,17 @@ function FAQItemControlled({
               strokeLinecap="round"
               strokeLinejoin="round"
               d="M12 4v16m8-8H4"
-              className={cn('transition-transform', isOpen && 'rotate-45')}
             />
           </svg>
         </span>
       </button>
       <div
         className={cn(
-          'overflow-hidden transition-all duration-200',
-          isOpen ? 'max-h-96' : 'max-h-0'
+          'overflow-hidden transition-all duration-300',
+          isOpen ? 'max-h-96 pb-5' : 'max-h-0'
         )}
       >
-        <Text as="div" className="px-6 pb-6 text-foreground-muted">
+        <Text as="div" className="text-foreground-muted">
           {item.answer}
         </Text>
       </div>
@@ -99,8 +98,8 @@ function FAQItemControlled({
 
 function FAQItemUncontrolled({ item }: { item: FAQItem }) {
   return (
-    <details className="group overflow-hidden rounded-2xl bg-surface-card border border-border">
-      <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+    <details className="group border-b border-border/60">
+      <summary className="flex items-center justify-between py-5 cursor-pointer list-none">
         <Text
           as="span"
           size="lg"
@@ -108,23 +107,23 @@ function FAQItemUncontrolled({ item }: { item: FAQItem }) {
         >
           {item.question}
         </Text>
-        <span className="flex-shrink-0 text-primary">
+        <span className="flex-shrink-0 text-foreground-muted transition-transform duration-300 group-open:rotate-45">
           <svg
-            className="w-6 h-6 transform transition-transform group-open:rotate-45"
+            className="w-5 h-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            strokeWidth={2}
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
               d="M12 4v16m8-8H4"
             />
           </svg>
         </span>
       </summary>
-      <div className="px-6 pb-6">
+      <div className="pb-5">
         <Text className="text-foreground-muted">{item.answer}</Text>
       </div>
     </details>
@@ -151,7 +150,7 @@ export function FAQAccordion({
 
   const renderFAQItems = () => (
     <ScrollReveal stagger={0.1} direction="up" distance={30}>
-      <div className="space-y-4">
+      <div className="divide-y-0 border-t border-border/60">
         {items.map((item, index) =>
           controlled ? (
             <div key={index} data-reveal>
