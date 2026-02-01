@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fetchly Website
+
+Marketing website for [fetch.ly](https://www.fetch.ly), built with Next.js 16, React 19, and Tailwind CSS 4. Statically exported for GitHub Pages deployment.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (static export)
+- **Styling:** Tailwind CSS 4
+- **Animations:** GSAP, Lenis (smooth scroll)
+- **Fonts:** Inter (via `next/font`)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | Description |
+|---|---|
+| `npm run dev` | Start dev server with hot reload |
+| `npm run build` | Static export to `out/` |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Static Export
 
-To learn more about Next.js, take a look at the following resources:
+The site is configured with `output: "export"` for static hosting. Set `NEXT_PUBLIC_BASE_PATH` if deploying under a subpath (e.g., GitHub Pages).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+NEXT_PUBLIC_BASE_PATH=/fetchly-website-next npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Session Tracking
 
-## Deploy on Vercel
+The site integrates `@fetchly/live-sessions` via the `<SessionTracker>` component in `src/app/layout.tsx`. It requires the live-sessions server to be running (see `../live-sessions/`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Start the live-sessions server:
+   ```bash
+   cd ../live-sessions
+   npm run build && npm start
+   ```
+2. Create a site in the dashboard at http://localhost:3800/admin/ (or via API):
+   ```bash
+   curl -X POST http://localhost:3800/api/sites \
+     -H "Authorization: Bearer <your-admin-api-key>" \
+     -H "Content-Type: application/json" \
+     -d '{"name":"Fetchly","domain":"localhost"}'
+   ```
+3. Add the site ID to `.env.local`:
+   ```
+   NEXT_PUBLIC_TRACKER_URL=http://localhost:3800
+   NEXT_PUBLIC_TRACKER_SITE_ID=<site-id-from-step-2>
+   ```
+4. Restart the Next.js dev server. Sessions will appear in the dashboard.
+
+## Project Structure
+
+```
+src/
+  app/            # Next.js App Router pages
+  components/
+    layout/       # Navbar, Footer
+    sections/     # Page sections (Hero, FAQ, etc.)
+    ui/           # Reusable UI components
+    effects/      # Visual effects (cursor, preloader, smooth scroll)
+    providers/    # Context providers (theme, session tracker)
+  styles/         # Global CSS
+  lib/            # Utilities
+```

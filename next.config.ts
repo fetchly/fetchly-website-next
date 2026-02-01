@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   images: {
     loaderFile: './src/lib/image-loader.ts',
   },
+  transpilePackages: ['@fetchly/live-sessions'],
+  webpack: (config) => {
+    config.resolve.symlinks = false;
+    return config;
+  },
 };
 
 export default nextConfig;

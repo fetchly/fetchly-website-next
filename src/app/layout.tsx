@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { SmoothScroll } from '@/components/effects/SmoothScroll';
 import { CursorProvider, CustomCursor } from '@/components/effects/CustomCursor';
 import { Preloader } from '@/components/effects/Preloader';
+import { SessionTracker } from '@/components/providers/SessionTracker';
 import '@/styles/globals.css';
 
 const inter = Inter({
@@ -54,6 +55,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-surface text-foreground antialiased">
         <ThemeProvider>
+          <SessionTracker />
           <Preloader />
           <SmoothScroll>
             <CursorProvider>
