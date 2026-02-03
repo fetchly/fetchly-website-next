@@ -97,9 +97,9 @@ function TypingIndicator() {
 
   return (
     <div ref={ref} className="flex gap-1 py-1 px-0.5">
-      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+      <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
+      <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
+      <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
     </div>
   );
 }
@@ -185,7 +185,7 @@ function BotMessage({ text, isLatest, onTypingDone }: BotMessageProps) {
   return (
     <div ref={wrapRef} className="flex gap-2 items-start">
       <BotAvatar />
-      <div className="max-w-[85%] bg-white/10 border border-white/10 rounded-lg rounded-tl-sm px-4 py-3 text-sm text-white">
+      <div className="max-w-[85%] bg-surface-card border border-border rounded-lg rounded-tl-sm px-4 py-3 text-sm text-foreground">
         {phase === 'indicator' ? <TypingIndicator /> : displayText}
       </div>
     </div>
@@ -230,7 +230,7 @@ function UserMessage({ text, skipped }: UserMessageProps) {
         className={cn(
           'max-w-[85%] rounded-lg rounded-tr-sm px-4 py-3 text-sm',
           skipped
-            ? 'border border-white/15 text-white/50 italic'
+            ? 'border border-border text-foreground-muted italic'
             : 'bg-primary text-black',
         )}
       >
@@ -356,7 +356,7 @@ function ChipSelector({ options, onSelect, disabled, skippable, onSkip }: ChipSe
           onClick={() => onSelect(opt)}
           className={cn(
             'px-4 py-2 rounded-lg text-sm font-medium border transition-colors duration-200',
-            'border-white/15 text-white/70 hover:text-white hover:border-primary',
+            'border-border text-foreground-subtle hover:text-foreground hover:border-primary',
             'disabled:opacity-50 disabled:cursor-not-allowed',
           )}
         >
@@ -368,7 +368,7 @@ function ChipSelector({ options, onSelect, disabled, skippable, onSkip }: ChipSe
           type="button"
           disabled={disabled}
           onClick={onSkip}
-          className="ml-auto text-sm text-white/50 hover:text-white transition-colors"
+          className="ml-auto text-sm text-foreground-muted hover:text-foreground transition-colors"
         >
           Skip
         </button>
@@ -443,8 +443,8 @@ function TextInputBar({ placeholder, skippable, disabled, onSend, onSkip }: Text
         disabled={disabled}
         className={cn(
           'flex-1 px-4 py-2.5 rounded-lg border transition-colors duration-200 text-sm',
-          'bg-white/5 text-white placeholder:text-white/40',
-          'border-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/10 outline-none',
+          'bg-overlay text-foreground placeholder:text-foreground-muted',
+          'border-border focus:border-primary/40 focus:ring-1 focus:ring-primary/20 outline-none',
           'disabled:opacity-50',
         )}
       />
@@ -453,7 +453,7 @@ function TextInputBar({ placeholder, skippable, disabled, onSend, onSkip }: Text
           type="button"
           disabled={disabled}
           onClick={onSkip}
-          className="text-sm text-white/50 hover:text-white transition-colors"
+          className="text-sm text-foreground-muted hover:text-foreground transition-colors"
         >
           Skip
         </button>
@@ -540,13 +540,13 @@ function TextareaInputBar({ placeholder, disabled, skippable, onSend, onSkip }: 
         rows={3}
         className={cn(
           'w-full px-4 py-3 rounded-lg border transition-colors duration-200 text-sm resize-none',
-          'bg-white/5 text-white placeholder:text-white/40',
-          'border-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/10 outline-none',
+          'bg-overlay text-foreground placeholder:text-foreground-muted',
+          'border-border focus:border-primary/40 focus:ring-1 focus:ring-primary/20 outline-none',
           'disabled:opacity-50',
         )}
       />
       <div className="flex items-center justify-between">
-        <span className="text-xs text-white/40">
+        <span className="text-xs text-foreground-muted">
           Shift+Enter for new line
         </span>
         <div className="flex items-center gap-4">
@@ -555,7 +555,7 @@ function TextareaInputBar({ placeholder, disabled, skippable, onSend, onSkip }: 
               type="button"
               disabled={disabled}
               onClick={onSkip}
-              className="text-sm text-white/50 hover:text-white transition-colors"
+              className="text-sm text-foreground-muted hover:text-foreground transition-colors"
             >
               Skip
             </button>
@@ -628,10 +628,10 @@ function ContactGroupInput({
     onSubmit();
   };
 
-  const glassInput = 'bg-white/5 !border-white/10 text-white placeholder:text-white/40 focus:!border-white/20 focus:!ring-1 focus:!ring-white/10';
+  const glassInput = 'bg-overlay !border-border text-foreground placeholder:text-foreground-muted focus:!border-primary/40 focus:!ring-1 focus:!ring-primary/20';
 
   return (
-    <form ref={wrapRef} onSubmit={handleSubmit} className="space-y-3 text-white">
+    <form ref={wrapRef} onSubmit={handleSubmit} className="space-y-3 text-foreground">
       <div className="grid grid-cols-2 gap-2">
         <Input
           ref={nameRef}
@@ -901,7 +901,7 @@ export function ChatForm() {
       {showAttention && <NotificationDot />}
 
       {/* Chat card — dark glassmorphism */}
-      <div className="bg-black/5 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden flex flex-col h-[400px] shadow-lg">
+      <div className="bg-overlay backdrop-blur-xl border border-border rounded-xl overflow-hidden flex flex-col h-[400px] shadow-lg">
         {/* Scrollable chat area with thin styled scrollbar */}
         <div
           ref={scrollRef}
@@ -911,8 +911,8 @@ export function ChatForm() {
             '[&::-webkit-scrollbar]:w-1.5',
             '[&::-webkit-scrollbar-track]:bg-transparent',
             '[&::-webkit-scrollbar-thumb]:rounded-full',
-            '[&::-webkit-scrollbar-thumb]:bg-white/10',
-            'hover:[&::-webkit-scrollbar-thumb]:bg-white/20',
+            '[&::-webkit-scrollbar-thumb]:bg-foreground/10',
+            'hover:[&::-webkit-scrollbar-thumb]:bg-foreground/20',
           )}
         >
           {chat.messages.map((msg, i) =>
@@ -936,7 +936,7 @@ export function ChatForm() {
 
         {/* Pinned input area — appears after the bot finishes typing */}
         {chat.started && !chat.isSuccess && !chat.isBotTyping && chat.currentStep.inputMode !== 'none' && (
-          <div className="border-t border-white/10 px-4 py-3">
+          <div className="border-t border-border px-4 py-3">
             <InputArea {...inputAreaProps} />
           </div>
         )}

@@ -1,10 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback, type ReactNode } from 'react';
-import { usePathname } from 'next/navigation';
 import { CursorContext, type CursorType } from '@/hooks/useCursor';
-
-const LIGHT_THEME_PAGES = ['/e-commerce', '/saas-home', '/our-model', '/services'];
 
 interface CursorProviderProps {
   children: ReactNode;
@@ -29,9 +26,6 @@ export function CustomCursor() {
   const [cursorType, setCursorType] = useState<CursorType>('default');
   const [isVisible, setIsVisible] = useState(false);
   const rafRef = useRef<number>(0);
-  const pathname = usePathname();
-  const isLight = LIGHT_THEME_PAGES.includes(pathname);
-
   useEffect(() => {
     // Hide on touch devices
     const isTouch = window.matchMedia('(pointer: coarse)').matches;
@@ -97,14 +91,9 @@ export function CustomCursor() {
   const outerHeight = isText ? 32 : outerSize;
   const innerScale = isHover ? 0 : isText ? 0 : 1;
 
-  // Theme-aware colors
-  const ringColor = isLight
-    ? 'rgba(31, 68, 75, 0.85)'
-    : 'rgba(105, 229, 251, 0.85)';
-  const ringHoverBg = isLight
-    ? 'rgba(31, 68, 75, 0.15)'
-    : 'rgba(105, 229, 251, 0.12)';
-  const dotColor = isLight ? '#1F444B' : '#69E5FB';
+  const ringColor = 'rgba(105, 229, 251, 0.85)';
+  const ringHoverBg = 'rgba(105, 229, 251, 0.12)';
+  const dotColor = '#69E5FB';
 
   return (
     <>
@@ -121,6 +110,7 @@ export function CustomCursor() {
           border: isHover ? 'none' : `1.5px solid ${ringColor}`,
           background: isHover ? ringHoverBg : 'transparent',
           transition: 'width 0.3s, height 0.3s, margin 0.3s, background 0.3s, border 0.3s, border-radius 0.3s, border-color 0.3s',
+          boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.5)',
           opacity: isVisible ? 1 : 0,
         }}
       />
@@ -137,6 +127,7 @@ export function CustomCursor() {
           background: dotColor,
           transform: `scale(${innerScale})`,
           transition: 'transform 0.3s, background 0.3s',
+          boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.5)',
           opacity: isVisible ? 0.9 : 0,
         }}
       />
