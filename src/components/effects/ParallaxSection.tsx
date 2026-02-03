@@ -115,7 +115,7 @@ export function ParallaxSection({
   }, [speed, pin, pinScale, fadeOut]);
 
   return (
-    <div ref={sectionRef} className={cn('relative', className)}>
+    <div ref={sectionRef} className={cn('relative overflow-hidden', className)}>
       <div ref={innerRef} className="will-change-transform">
         {children}
       </div>
