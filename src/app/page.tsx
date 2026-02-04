@@ -3,6 +3,7 @@ import { Hero } from '@/components/sections/Hero';
 import { StatsBar } from '@/components/sections/StatsBar';
 import { IndustryGrid } from '@/components/sections/IndustryGrid';
 import { SolutionsGrid } from '@/components/sections/SolutionsGrid';
+import { FeaturedCaseStudy } from '@/components/sections/FeaturedCaseStudy';
 import { Bento } from '@/components/sections/Bento';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { Comparison } from '@/components/sections/Comparison';
@@ -99,6 +100,7 @@ export default function HomePage() {
       <StatsBar stats={HOMEPAGE_STATS} />
       <IndustryGrid />
       <SolutionsGrid />
+      <FeaturedCaseStudy />
       <Bento />
       <ProcessSteps />
       <Comparison />

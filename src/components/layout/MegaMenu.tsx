@@ -118,6 +118,7 @@ export function MegaMenu({ item }: { item: NavItemWithDropdown }) {
               className={cn(
                 'flex flex-col gap-0.5 rounded-lg hover:bg-surface-card-hover transition-colors',
                 wide ? 'px-3 py-2' : 'px-4 py-3',
+                subItem.featured && 'border-l-2 border-l-primary bg-primary/5',
               )}
               data-cursor="hover"
             >
@@ -184,7 +185,10 @@ export function MobileAccordion({ item, onNavigate }: { item: NavItemWithDropdow
               key={subItem.href}
               href={subItem.href}
               onClick={onNavigate}
-              className="block py-2 text-sm text-foreground-muted hover:text-foreground transition-colors"
+              className={cn(
+                'block py-2 text-sm text-foreground-muted hover:text-foreground transition-colors',
+                subItem.featured && 'border-l-2 border-l-primary pl-3 bg-primary/5 rounded-r-md text-foreground font-medium',
+              )}
             >
               {subItem.label}
             </Link>

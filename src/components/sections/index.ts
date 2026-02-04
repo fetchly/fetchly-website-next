@@ -19,6 +19,7 @@ export { IndustryGrid } from './IndustryGrid';
 export { SolutionsGrid } from './SolutionsGrid';
 export { TechBadgeGrid } from './TechBadgeGrid';
 export { LocationsBar } from './LocationsBar';
+export { FeaturedCaseStudy } from './FeaturedCaseStudy';
 
 export type { SectionHeaderProps } from './SectionHeader';
 export type { ProcessStep, ProcessStepsProps } from './ProcessSteps';
@@ -35,3 +36,4 @@ export type { SolutionsGridProps } from './SolutionsGrid';
 export type { TechBadge, TechBadgeGridProps } from './TechBadgeGrid';
 export type { LocationsBarProps } from './LocationsBar';
 export type { TestimonialsProps } from './Testimonials';
+export type { FeaturedCaseStudyProps } from './FeaturedCaseStudy';

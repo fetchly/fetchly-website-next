@@ -309,6 +309,90 @@ This keeps the chat UX as a conversion differentiator on the e-commerce page whi
 
 ---
 
+## SEO Considerations
+
+### Intake pages — indexing
+
+Both `/intake/request` and `/intake/book` are conversion endpoints, not content pages. They should not compete for organic keywords. Add `noindex` to both:
+
+```typescript
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+};
+```
+
+Using `follow: true` preserves any outbound link equity while keeping the pages out of search results.
+
+### Query param duplication
+
+Pre-filled URLs like `/intake/request?solution=build-mvp` and `/intake/request?solution=rescue` create distinct URLs with near-identical content. Without handling, search engines may treat these as duplicate pages. Two options (use one):
+
+**Option A — Canonical tag (preferred):**
+
+```typescript
+// /intake/request/page.tsx
+export const metadata: Metadata = {
+  alternates: { canonical: '/intake/request' },
+  robots: { index: false, follow: true },
+};
+```
+
+**Option B — robots.txt:**
+
+```
+Disallow: /intake/request?*
+Disallow: /intake/book?*
+```
+
+Option A is preferred since the `noindex` directive already covers it. The canonical is a safety net if the `noindex` is ever removed.
+
+### Calendly widget — Core Web Vitals
+
+The Calendly embed script loads from `assets.calendly.com` at runtime. The static HTML contains only an empty container div — no crawlable content. On `/intake/book` where the widget is above the fold, this affects LCP.
+
+Mitigations:
+
+1. **Lazy-load the script** — only inject the Calendly `<script>` tag after the component mounts, not in `<head>`
+2. **Show a skeleton** — render a placeholder with dimensions matching the responsive sizing table (section 2) so there's no layout shift (CLS)
+3. **Preconnect** — add `<link rel="preconnect" href="https://assets.calendly.com">` in the root layout to reduce connection latency
+
+```typescript
+// CalendlyEmbed.tsx — load script on mount, not globally
+useEffect(() => {
+  const script = document.createElement('script');
+  script.src = 'https://assets.calendly.com/assets/external/widget.js';
+  script.async = true;
+  document.body.appendChild(script);
+  return () => { document.body.removeChild(script); };
+}, []);
+```
+
+### Cookie consent — GDPR
+
+The Calendly embed uses `hide_gdpr_banner=1`, which suppresses Calendly's own consent UI. This means your site's cookie policy must cover Calendly's cookies. If the site adds a cookie consent banner later, Calendly's embed should be gated behind consent for EU visitors to avoid compliance flags from Google Search Console.
+
+### Internal link equity
+
+CTAs across 55+ pages split between `/intake/request` (soft) and `/intake/book` (hard). Since both are `noindex`, this doesn't create an SEO problem — but if either path is ever indexed, the one with fewer internal links will have weaker page authority. Keep the split intentional and documented in the CTA mapping table above.
+
+### Structured data
+
+The rest of the site uses FAQ, Service, LocalBusiness, and Breadcrumb schema. The intake pages don't need structured data unless `/intake/book` is indexed for branded queries like "book a call with Fetchly". In that case, add a `ContactPoint` schema:
+
+```typescript
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPoint',
+  contactType: 'sales',
+  url: 'https://fetchly.com/intake/book',
+  availableLanguage: 'English',
+};
+```
+
+Not needed while pages are `noindex`.
+
+---
+
 ## Implementation Sequence
 
 1. Create HubSpot form in dashboard, get form GUID, set env vars

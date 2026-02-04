@@ -20,7 +20,7 @@ export const NAV_LINKS: NavItemWithDropdown[] = [
     label: 'Industries',
     href: '/industries',
     items: [
-      { label: 'E-Commerce & Marketplaces', href: '/industries/ecommerce', description: 'Shopify, custom marketplaces, subscriptions.' },
+      { label: 'E-Commerce & Marketplaces', href: '/industries/ecommerce', description: 'Shopify, custom marketplaces, subscriptions.', featured: true },
       { label: 'Healthcare & MedTech', href: '/industries/healthcare', description: 'HIPAA-compliant platforms and patient portals.' },
       { label: 'HR Tech & Recruitment', href: '/industries/hr-tech', description: 'AI matching, ATS integrations, PEO platforms.' },
       { label: 'Logistics & Supply Chain', href: '/industries/logistics', description: 'Tracking, rates, and carrier integrations.' },

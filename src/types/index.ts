@@ -139,6 +139,7 @@ export interface NavDropdownItem {
   href: string;
   description?: string;
   icon?: string;
+  featured?: boolean;
 }
 
 export interface NavItemWithDropdown {
