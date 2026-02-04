@@ -98,7 +98,7 @@ export default async function HomePage() {
       <ProcessSteps title={page.processStepsTitle} steps={[...page.processSteps]} />
       <Comparison data={comparison} />
       <CaseStudyGrid items={HOMEPAGE_CASE_STUDIES} />
-      <Testimonials items={testimonials.slice(0, 4)} />
+      <Testimonials items={testimonials} />
       <TechBadgeGrid badges={TECH_BADGES} columns={8} />
       <FAQ items={page.faqItems} title={page.faqTitle} label={page.faqLabel} />
       <LocationsBar title={page.locationsTitle} locations={locations} />

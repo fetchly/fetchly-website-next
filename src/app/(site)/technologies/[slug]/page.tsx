@@ -87,7 +87,7 @@ export default async function TechnologyPage({
         />
       )}
 
-      <Testimonials items={testimonials.slice(0, 4)} />
+      {testimonials.length > 0 && <Testimonials items={testimonials} />}
 
       {tech.faqItems && tech.faqItems.length > 0 && (
         <FAQ

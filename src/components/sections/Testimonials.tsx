@@ -175,45 +175,47 @@ export function Testimonials({ items }: TestimonialsProps) {
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="flex items-center justify-center gap-6 mt-12">
-          <button
-            onClick={goToPrevious}
-            className="text-foreground-muted hover:text-foreground transition-colors"
-            aria-label="Previous testimonial"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+        {/* Navigation — hidden when only one testimonial */}
+        {testimonials.length > 1 && (
+          <div className="flex items-center justify-center gap-6 mt-12">
+            <button
+              onClick={goToPrevious}
+              className="text-foreground-muted hover:text-foreground transition-colors"
+              aria-label="Previous testimonial"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-          {/* Dots */}
-          <div className="flex gap-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToIndex(index)}
-                className={cn(
-                  'h-px transition-all duration-300',
-                  index === currentIndex
-                    ? 'w-8 bg-primary'
-                    : 'w-4 bg-foreground/20 hover:bg-foreground/40'
-                )}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
+            {/* Dots */}
+            <div className="flex gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToIndex(index)}
+                  className={cn(
+                    'h-px transition-all duration-300',
+                    index === currentIndex
+                      ? 'w-8 bg-primary'
+                      : 'w-4 bg-foreground/20 hover:bg-foreground/40'
+                  )}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={goToNext}
+              className="text-foreground-muted hover:text-foreground transition-colors"
+              aria-label="Next testimonial"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
-
-          <button
-            onClick={goToNext}
-            className="text-foreground-muted hover:text-foreground transition-colors"
-            aria-label="Next testimonial"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+        )}
       </ScrollReveal>
     </Section>
   );

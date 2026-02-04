@@ -106,7 +106,7 @@ export default async function IndustryPage({
         />
       )}
 
-      <Testimonials items={testimonials} />
+      {testimonials.length > 0 && <Testimonials items={testimonials} />}
 
       {industry.faqItems && industry.faqItems.length > 0 && (
         <FAQ

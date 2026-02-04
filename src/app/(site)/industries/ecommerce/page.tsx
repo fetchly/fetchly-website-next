@@ -191,7 +191,7 @@ export default async function EcommercePage() {
       )}
 
       {/* Testimonials */}
-      <Testimonials items={testimonials} />
+      {testimonials.length > 0 && <Testimonials items={testimonials} />}
 
       {/* FAQ */}
       {industry.faqItems && industry.faqItems.length > 0 && (

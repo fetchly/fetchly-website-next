@@ -133,7 +133,7 @@ export default async function OurModelPage() {
         }))}
       />
 
-      <Testimonials items={allTestimonials.slice(0, 4)} />
+      <Testimonials items={allTestimonials} />
 
       <FAQ
         items={page.faqItems}

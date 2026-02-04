@@ -98,7 +98,7 @@ export default async function SolutionPage({
         />
       )}
 
-      <Testimonials items={testimonials} />
+      {testimonials.length > 0 && <Testimonials items={testimonials} />}
 
       {solution.faqItems && solution.faqItems.length > 0 && (
         <FAQ

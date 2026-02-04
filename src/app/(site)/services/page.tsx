@@ -41,7 +41,7 @@ export default async function ServicesPage() {
         columns={4}
       />
       <IndustryGrid industries={industries} />
-      <Testimonials items={testimonials.slice(0, 4)} />
+      <Testimonials items={testimonials} />
       <FAQ items={page.faqItems} title={page.faqTitle} label={page.faqLabel} />
       <CTA title={page.ctaTitle} buttonText={page.ctaButtonText} />
     </>
