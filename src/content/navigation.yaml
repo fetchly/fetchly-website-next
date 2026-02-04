@@ -45,10 +45,6 @@ items:
         href: "/industries/healthcare"
         description: "HIPAA-compliant platforms and patient portals."
         featured: false
-      - label: "HR Tech & Recruitment"
-        href: "/industries/hr-tech"
-        description: "AI matching, ATS integrations, PEO platforms."
-        featured: false
       - label: "Logistics & Supply Chain"
         href: "/industries/logistics"
         description: "Tracking, rates, and carrier integrations."
