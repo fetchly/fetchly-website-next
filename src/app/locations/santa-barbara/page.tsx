@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { localBusinessSchema } from '@/lib/schema';
 import { PageHero, SolutionsGrid, FAQ, CTA } from '@/components/sections';
 import { LOCATIONS, SOLUTIONS } from '@/lib/page-data';
@@ -35,14 +35,12 @@ export default function SantaBarbaraPage() {
   return (
     <>
       <SchemaMarkup schema={[localBusinessSchema(location)]} />
-      <Container>
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Locations' }, { label: 'Santa Barbara' }]} />
-      </Container>
       <PageHero
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Locations' }, { label: 'Santa Barbara' }]}
         title="Santa Barbara's development partner."
         description="Custom software development in Santa Barbara. Full-stack engineering, design, QA, and DevOps — from California's tech corridor."
         ctaText="Talk to our Santa Barbara team"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         secondaryText="See our work"
         secondaryHref="/case-studies"
       />

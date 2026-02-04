@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
 
@@ -48,21 +47,16 @@ export default function ApiDevelopmentPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Technologies' },
-            { label: 'API Development' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Technologies' },
+          { label: 'API Development' },
+        ]}
         title="APIs built for the long haul."
         description="REST and GraphQL API design, development, and integration — performant, documented, and built to evolve."
         ctaText="Start your API project"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

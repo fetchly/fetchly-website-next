@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { localBusinessSchema } from '@/lib/schema';
 import { PageHero, SolutionsGrid, FAQ, CTA } from '@/components/sections';
 import { LOCATIONS, SOLUTIONS } from '@/lib/page-data';
@@ -35,14 +35,12 @@ export default function DenverPage() {
   return (
     <>
       <SchemaMarkup schema={[localBusinessSchema(location)]} />
-      <Container>
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Locations' }, { label: 'Denver' }]} />
-      </Container>
       <PageHero
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Locations' }, { label: 'Denver' }]}
         title="Denver's development partner for ambitious companies."
         description="Custom software development in Denver. Full-stack engineering, design, QA, and DevOps — all from a team that knows the Colorado tech scene."
         ctaText="Talk to our Denver team"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         secondaryText="See our work"
         secondaryHref="/case-studies"
       />

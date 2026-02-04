@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
-import { Breadcrumbs } from '@/components/seo';
+
 import { CTA } from '@/components/sections/CTA';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { FeatureGrid } from '@/components/sections/FeatureGrid';
@@ -86,18 +86,13 @@ const FAQ_ITEMS = [
 export default function EcommercePage() {
   return (
     <>
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries', href: '/industries' },
-            { label: 'E-Commerce' },
-          ]}
-        />
-      </Container>
-
       {/* Hero Section */}
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Industries', href: '/industries' },
+          { label: 'E-Commerce' },
+        ]}
         title="Shopify, Built for Brands That Scale"
         subtitle="Custom Shopify design, development, and conversion optimization for brands going further."
         description="We strategize, design, build, test, launch, and manage custom Shopify stores on a flexible month-to-month basis. From UX to backend, every store we build is optimized to drive revenue."
@@ -198,7 +193,7 @@ export default function EcommercePage() {
                   Get a high-performing Shopify store designed, built, and managed by a team that&apos;s launched over 70.
                 </Text>
                 <div>
-                  <Button href="/intake/step-1" size="lg" variant="primary">
+                  <Button href="/intake/request" size="lg" variant="primary">
                     Get in Touch
                   </Button>
                 </div>

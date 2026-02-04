@@ -3,7 +3,7 @@
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
-import { Breadcrumbs } from '@/components/seo';
+
 import {
   PageHero,
   ProcessSteps,
@@ -54,17 +54,12 @@ const CASE_STUDIES = [
 export default function LogisticsPage() {
   return (
     <>
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries' },
-            { label: 'Logistics' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Industries' },
+          { label: 'Logistics' },
+        ]}
         title="Logistics software for the real world."
         description="We build platforms that handle the complexity of real-world supply chains — rates, routes, tracking, and compliance."
         ctaText="Start your logistics project"

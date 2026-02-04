@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
 
@@ -48,21 +47,16 @@ export default function ContentfulPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Technologies' },
-            { label: 'Contentful' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Technologies' },
+          { label: 'Contentful' },
+        ]}
         title="Content architecture done right."
         description="Headless CMS implementation with Contentful — structured content, flexible delivery, and developer-friendly architecture."
         ctaText="Start your CMS project"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

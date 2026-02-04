@@ -106,10 +106,10 @@
 
 :root {
   --surface: #f0fcfe;
-  --surface-alt: #fffefa;
-  --surface-card: #f6f5f1;
-  --surface-card-hover: #eeede8;
-  --surface-muted: #fffefa;
+  --surface-alt: #f2f5f6;
+  --surface-card: #f8fafb;
+  --surface-card-hover: #f0f3f5;
+  --surface-muted: #f2f5f6;
   --foreground: #000000;
   --foreground-muted: #3c3f41;
   --foreground-subtle: rgba(0, 0, 0, 0.6);

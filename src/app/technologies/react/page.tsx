@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
 
@@ -74,15 +73,12 @@ export default function ReactPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'React' }]} />
-      </Container>
-
       <PageHero
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'React' }]}
         title="React interfaces that users love."
         description="Interactive, performant user interfaces with React and the modern ecosystem — hooks, TypeScript, and component-driven architecture."
         ctaText="Start your React project"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

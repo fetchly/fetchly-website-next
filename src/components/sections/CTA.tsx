@@ -19,7 +19,7 @@ export function CTA({
   title = 'Ready to start building?',
   description,
   buttonText = 'Get in Touch',
-  buttonHref = '/intake/step-1',
+  buttonHref = '/intake/request',
   className,
 }: CTAProps) {
   return (

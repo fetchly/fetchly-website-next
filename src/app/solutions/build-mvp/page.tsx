@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { PageHero, PainPoints, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
-import { Container } from '@/components/ui/Container';
 
 export const metadata: Metadata = {
   title: 'Build My MVP — From Idea to Launched Product | Fetchly',
@@ -100,17 +99,12 @@ export default function BuildMvpPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Solutions', href: '/solutions' },
-            { label: 'Build My MVP' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'Build My MVP' },
+        ]}
         title="From idea to launched product."
         description="We've built 50+ MVPs for funded startups. Your first version ships in weeks, not months."
         ctaText="Get a free product roadmap"

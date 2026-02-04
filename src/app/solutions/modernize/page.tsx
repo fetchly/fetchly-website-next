@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import {
   PageHero,
@@ -56,17 +56,12 @@ export default function ModernizePage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Solutions', href: '/services' },
-            { label: 'Modernize & Migrate' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/services' },
+          { label: 'Modernize & Migrate' },
+        ]}
         title="Your legacy stack is holding you back."
         description="We modernize aging applications incrementally — no big-bang rewrites, no downtime, no drama."
         ctaText="Get a free modernization roadmap"

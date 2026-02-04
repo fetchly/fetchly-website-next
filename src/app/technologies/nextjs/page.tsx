@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
 
@@ -74,15 +73,12 @@ export default function NextjsPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'Next.js' }]} />
-      </Container>
-
       <PageHero
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'Next.js' }]}
         title="Next.js development that ships."
         description="Full-stack React applications with server-side rendering, static generation, and the best developer experience in the ecosystem."
         ctaText="Start your Next.js project"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, PainPoints, ProcessSteps, FeatureGrid, FAQ, CTA } from '@/components/sections';
 
@@ -48,21 +47,16 @@ export default function ReactModernizationPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Technologies' },
-            { label: 'React Modernization' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Technologies' },
+          { label: 'React Modernization' },
+        ]}
         title="Legacy React holding you back?"
         description="We upgrade class components to hooks, modernize state management, and bring your React app into the current ecosystem."
         ctaText="Get a free migration audit"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

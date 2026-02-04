@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import {
   PageHero,
@@ -56,17 +56,12 @@ export default function QATestingPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Solutions', href: '/services' },
-            { label: 'QA & Testing' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/services' },
+          { label: 'QA & Testing' },
+        ]}
         title="Ship with confidence."
         description="Dedicated QA engineers who find the bugs before your users do. Manual testing, automation, performance, and security."
         ctaText="Start testing today"

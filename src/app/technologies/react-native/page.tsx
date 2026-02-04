@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
 
@@ -74,15 +73,12 @@ export default function ReactNativePage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'React Native' }]} />
-      </Container>
-
       <PageHero
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'React Native' }]}
         title="One codebase. iOS and Android."
         description="Cross-platform mobile apps from a single codebase — native performance, faster development, lower costs."
         ctaText="Start your mobile project"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

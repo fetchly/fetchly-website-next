@@ -46,7 +46,7 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-surface/95 backdrop-blur-md shadow-lg'
+          ? 'bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-lg'
           : 'bg-transparent',
         forceDarkTheme && 'dark'
       )}
@@ -85,7 +85,7 @@ export function Navbar() {
               );
             })}
             <ThemeToggle />
-            <Button href="/intake/step-1" size="sm">
+            <Button href="/intake/request" size="sm">
               Get in Touch
             </Button>
           </div>
@@ -119,7 +119,7 @@ export function Navbar() {
             isMobileMenuOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
           )}
         >
-          <div className="py-4 border-t border-border bg-surface">
+          <div className="py-4 border-t border-white/10 bg-surface/80 backdrop-blur-xl">
             {NAV_LINKS.map((navItem) => {
               if (navItem.items?.length) {
                 return (
@@ -148,7 +148,7 @@ export function Navbar() {
             })}
             <div className="pt-4 flex items-center gap-3">
               <ThemeToggle />
-              <Button href="/intake/step-1" className="flex-1">
+              <Button href="/intake/request" className="flex-1">
                 Get in Touch
               </Button>
             </div>

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
 
@@ -74,15 +73,12 @@ export default function RailsPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'Ruby on Rails' }]} />
-      </Container>
-
       <PageHero
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'Ruby on Rails' }]}
         title="Rails — fast to build, built to last."
         description="We've shipped 30+ Rails applications. Rapid development with a battle-tested framework."
         ctaText="Start your Rails project"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

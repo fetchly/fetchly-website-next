@@ -10,8 +10,11 @@ import { SplitText } from '@/components/effects/SplitText';
 import { Text } from '@/components/ui/Text';
 import { Parallax } from '@/components/effects/Parallax';
 import { cn } from '@/lib/utils';
+import { Breadcrumbs, BreadcrumbItem } from '@/components/seo/Breadcrumbs';
 
 export interface PageHeroProps {
+  /** Breadcrumb items rendered above the hero content */
+  breadcrumbs?: BreadcrumbItem[];
   /** Main hero title */
   title: ReactNode;
   /** Subtitle displayed below title (uppercase tagline style) */
@@ -43,6 +46,7 @@ export interface PageHeroProps {
 }
 
 export function PageHero({
+  breadcrumbs,
   title,
   subtitle,
   description,
@@ -118,12 +122,18 @@ export function PageHero({
   return (
     <section
       className={cn(
-        'relative min-h-screen flex items-center pt-(--header-height) overflow-hidden bg-surface',
+        'relative min-h-screen flex flex-col pt-(--header-height) overflow-hidden bg-surface',
         className
       )}
     >
-      <Container>
+      {breadcrumbs && (
+        <Container>
+          <Breadcrumbs items={breadcrumbs} />
+        </Container>
+      )}
+      <Container className="flex-1 flex items-center">
         <div className={cn(
+          'w-full',
           'grid grid-cols-1 items-center py-8',
           (image || rightContent) ? 'lg:grid-cols-2 gap-16 lg:gap-32' : 'max-w-3xl'
         )}>

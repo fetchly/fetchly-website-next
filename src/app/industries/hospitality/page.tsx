@@ -3,7 +3,7 @@
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
-import { Breadcrumbs } from '@/components/seo';
+
 import {
   PageHero,
   ProcessSteps,
@@ -54,17 +54,12 @@ const CASE_STUDIES = [
 export default function HospitalityPage() {
   return (
     <>
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries' },
-            { label: 'Hospitality' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Industries' },
+          { label: 'Hospitality' },
+        ]}
         title="Hospitality platforms that handle the chaos."
         description="We build event management platforms, booking systems, and ticketing integrations that work when it matters most."
         ctaText="Start your hospitality project"

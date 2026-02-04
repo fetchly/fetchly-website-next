@@ -3,7 +3,7 @@
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
-import { Breadcrumbs } from '@/components/seo';
+
 import {
   PageHero,
   ProcessSteps,
@@ -55,17 +55,12 @@ const CASE_STUDIES = [
 export default function HealthcarePage() {
   return (
     <>
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries' },
-            { label: 'Healthcare' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Industries' },
+          { label: 'Healthcare' },
+        ]}
         title="Healthcare software built on compliance."
         description="We build HIPAA-compliant platforms, patient portals, and medical device software — with compliance architected in from day one."
         ctaText="Start your healthcare project"

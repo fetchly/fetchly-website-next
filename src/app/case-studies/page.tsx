@@ -116,7 +116,7 @@ export default function CaseStudiesPage() {
               process.
             </Text>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button href="/intake/step-1" size="lg">
+              <Button href="/intake/request" size="lg">
                 Get in Touch
               </Button>
               <Button href="/services" variant="outline" size="lg">

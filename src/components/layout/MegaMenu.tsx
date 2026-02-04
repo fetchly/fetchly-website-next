@@ -1,23 +1,44 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import type { NavItemWithDropdown } from '@/types';
 
 export function MegaMenu({ item }: { item: NavItemWithDropdown }) {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
+
+  useEffect(() => { setMounted(true); }, []);
 
   const handleOpen = useCallback(() => {
     clearTimeout(timeoutRef.current);
+    if (triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      setPos({ top: rect.bottom + 8, left: rect.left + rect.width / 2 });
+    }
     setOpen(true);
   }, []);
 
   const handleClose = useCallback(() => {
     timeoutRef.current = setTimeout(() => setOpen(false), 150);
   }, []);
+
+  // Update dropdown position when opening
+  useEffect(() => {
+    if (open && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      setPos({
+        top: rect.bottom + 8,
+        left: rect.left + rect.width / 2,
+      });
+    }
+  }, [open]);
 
   // Close on Escape
   useEffect(() => {
@@ -33,7 +54,11 @@ export function MegaMenu({ item }: { item: NavItemWithDropdown }) {
   useEffect(() => {
     if (!open) return;
     const handleClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        triggerRef.current && !triggerRef.current.contains(target) &&
+        (!dropdownRef.current || !dropdownRef.current.contains(target))
+      ) {
         setOpen(false);
       }
     };
@@ -49,9 +74,47 @@ export function MegaMenu({ item }: { item: NavItemWithDropdown }) {
 
   const wide = item.items.length > 10;
 
+  const dropdown = (
+    <div
+      ref={dropdownRef}
+      className={cn(
+        'fixed -translate-x-1/2 rounded-xl border border-white/10 bg-surface/80 backdrop-blur-xl shadow-xl z-50',
+        'transition-[opacity,transform] duration-200',
+        wide ? 'w-[42rem]' : 'w-[28rem]',
+        open
+          ? 'opacity-100 translate-y-0 pointer-events-auto'
+          : 'opacity-0 -translate-y-1 pointer-events-none',
+      )}
+      style={{ top: pos.top, left: pos.left }}
+      onMouseEnter={handleOpen}
+      onMouseLeave={handleClose}
+    >
+      <div className={cn('p-3 grid gap-0.5', wide ? 'grid-cols-2' : 'grid-cols-1')}>
+        {item.items.map((subItem) => (
+          <Link
+            key={subItem.href}
+            href={subItem.href}
+            onClick={() => setOpen(false)}
+            className={cn(
+              'flex flex-col gap-0.5 rounded-lg hover:bg-surface-alt transition-colors',
+              wide ? 'px-3 py-2' : 'px-4 py-3',
+              subItem.featured && 'border-l-2 border-l-primary bg-primary/5',
+            )}
+            data-cursor="hover"
+          >
+            <span className="text-sm font-medium text-foreground">{subItem.label}</span>
+            {subItem.description && (
+              <span className="text-xs text-foreground-muted">{subItem.description}</span>
+            )}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div
-      ref={ref}
+      ref={triggerRef}
       className="relative"
       onMouseEnter={handleOpen}
       onMouseLeave={handleClose}
@@ -98,38 +161,7 @@ export function MegaMenu({ item }: { item: NavItemWithDropdown }) {
         </button>
       </div>
 
-      {/* Dropdown panel */}
-      <div
-        className={cn(
-          'absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-xl border border-border bg-surface shadow-xl z-50',
-          'transition-all duration-200 origin-top',
-          wide ? 'w-[42rem]' : 'w-[28rem]',
-          open
-            ? 'opacity-100 scale-100 pointer-events-auto'
-            : 'opacity-0 scale-95 pointer-events-none',
-        )}
-      >
-        <div className={cn('p-3 grid gap-0.5', wide ? 'grid-cols-2' : 'grid-cols-1')}>
-          {item.items.map((subItem) => (
-            <Link
-              key={subItem.href}
-              href={subItem.href}
-              onClick={() => setOpen(false)}
-              className={cn(
-                'flex flex-col gap-0.5 rounded-lg hover:bg-surface-alt transition-colors',
-                wide ? 'px-3 py-2' : 'px-4 py-3',
-                subItem.featured && 'border-l-2 border-l-primary bg-primary/5',
-              )}
-              data-cursor="hover"
-            >
-              <span className="text-sm font-medium text-foreground">{subItem.label}</span>
-              {subItem.description && (
-                <span className="text-xs text-foreground-muted">{subItem.description}</span>
-              )}
-            </Link>
-          ))}
-        </div>
-      </div>
+      {mounted && createPortal(dropdown, document.body)}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import { PageHero, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
 
@@ -74,15 +73,12 @@ export default function PythonPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'Python & Django' }]} />
-      </Container>
-
       <PageHero
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Technologies' }, { label: 'Python & Django' }]}
         title="Python for serious applications."
         description="Backend services, APIs, and data-driven applications with Python and Django — from startups to enterprise."
         ctaText="Start your Python project"
-        ctaHref="/intake/step-1"
+        ctaHref="/intake/request"
         showBadge={false}
       />
 

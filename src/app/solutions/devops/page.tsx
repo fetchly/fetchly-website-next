@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import {
   PageHero,
@@ -56,17 +56,12 @@ export default function DevOpsPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Solutions', href: '/services' },
-            { label: 'DevOps & Infrastructure' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/services' },
+          { label: 'DevOps & Infrastructure' },
+        ]}
         title="Deploy on Friday without sweating."
         description="CI/CD pipelines, containerization, cloud architecture, and monitoring — so your team ships faster and sleeps better."
         ctaText="Get a free infrastructure audit"

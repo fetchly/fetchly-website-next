@@ -75,7 +75,7 @@ export function Comparison() {
                   <td className="py-6 px-6" />
                   <td className="py-6 px-6" />
                   <td className="py-6 px-6 text-center bg-primary dark:bg-dark rounded-b-2xl">
-                    <Button href="/intake/step-1" className="w-full">
+                    <Button href="/intake/request" className="w-full">
                       Get in touch
                     </Button>
                   </td>

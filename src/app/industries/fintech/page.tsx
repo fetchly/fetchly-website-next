@@ -3,7 +3,7 @@
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
-import { Breadcrumbs } from '@/components/seo';
+
 import {
   PageHero,
   ProcessSteps,
@@ -54,17 +54,12 @@ const CASE_STUDIES = [
 export default function FinTechPage() {
   return (
     <>
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries' },
-            { label: 'FinTech' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Industries' },
+          { label: 'FinTech' },
+        ]}
         title="Financial software where security is the foundation."
         description="We build payment processing, mortgage platforms, and property management software — with security and compliance as the foundation, not an afterthought."
         ctaText="Start your fintech project"

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 import {
   PageHero,
@@ -56,17 +56,12 @@ export default function DesignPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Solutions', href: '/services' },
-            { label: 'Design & UX' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/services' },
+          { label: 'Design & UX' },
+        ]}
         title="Design that converts, not just looks good."
         description="Product design, UI/UX, design systems, and prototyping — from designers who understand engineering constraints."
         ctaText="Start a design project"

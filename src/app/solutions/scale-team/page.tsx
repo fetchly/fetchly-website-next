@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { PageHero, PainPoints, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
-import { Container } from '@/components/ui/Container';
 
 export const metadata: Metadata = {
   title: 'Scale My Team — Dedicated Developers on Demand | Fetchly',
@@ -97,17 +96,12 @@ export default function ScaleTeamPage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Solutions', href: '/solutions' },
-            { label: 'Scale My Team' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'Scale My Team' },
+        ]}
         title="Your engineering team, extended."
         description="Dedicated developers, designers, QA, and PMs who integrate with your team — not a revolving door of freelancers."
         ctaText="Build your team"

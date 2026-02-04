@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useMemo } from 'react';
 
-export type ProjectType = 'New Store' | 'Redesign' | 'Migration' | 'Optimization' | '';
+export type ProjectType = string;
 export type CompanySize = '1-5' | '6-10' | '11-49' | '50-250' | '251+' | '';
 
 export interface IntakeFields {

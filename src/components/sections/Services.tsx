@@ -100,7 +100,7 @@ export function Services() {
         {/* CTA Button */}
         <ScrollReveal direction="up" distance={20} delay={0.2}>
           <div className="text-center mt-16 md:mt-20">
-            <Button href="/intake/step-1" size="lg">
+            <Button href="/intake/request" size="lg">
               Get started
             </Button>
           </div>

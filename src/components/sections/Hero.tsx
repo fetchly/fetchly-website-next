@@ -71,7 +71,7 @@ export function Hero() {
       return;
     }
     setError(false);
-    window.location.href = `/intake/step-1?email=${encodeURIComponent(email)}`;
+    window.location.href = `/intake/request?email=${encodeURIComponent(email)}`;
   };
 
   return (
@@ -127,8 +127,6 @@ export function Hero() {
         </div>
       </Container>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent z-10" />
 
       {/* Logo Marquee at bottom of hero */}
       <div className="dark absolute bottom-8 left-0 right-0 z-20">

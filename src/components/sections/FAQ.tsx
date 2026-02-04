@@ -182,7 +182,7 @@ export function FAQ({ items, title, label }: FAQProps) {
           )}>
             <div className="text-center">
               <Text className="text-foreground-muted mb-4">Still have questions?</Text>
-              <Button href="/intake/step-1" size="lg">
+              <Button href="/intake/request" size="lg">
                 Get in Touch
               </Button>
             </div>

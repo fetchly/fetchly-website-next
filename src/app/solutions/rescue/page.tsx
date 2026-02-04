@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { PageHero, PainPoints, ProcessSteps, FeatureGrid, Testimonials, FAQ, CTA } from '@/components/sections';
-import { SchemaMarkup, Breadcrumbs } from '@/components/seo';
+import { SchemaMarkup } from '@/components/seo';
 import { serviceSchema, faqSchema } from '@/lib/schema';
-import { Container } from '@/components/ui/Container';
 
 export const metadata: Metadata = {
   title: 'Rescue & Replace — Fix Your Failed Project | Fetchly',
@@ -100,17 +99,12 @@ export default function RescuePage() {
         ]}
       />
 
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Solutions', href: '/solutions' },
-            { label: 'Rescue & Replace' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Solutions', href: '/solutions' },
+          { label: 'Rescue & Replace' },
+        ]}
         title="Your last agency didn't work out."
         description="We've rescued dozens of projects from failed agencies, abandoned codebases, and missed deadlines. We'll pick up where they left off — or start fresh."
         ctaText="Get a free codebase assessment"

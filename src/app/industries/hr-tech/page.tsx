@@ -3,7 +3,7 @@
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
-import { Breadcrumbs } from '@/components/seo';
+
 import {
   PageHero,
   ProcessSteps,
@@ -56,17 +56,12 @@ const CASE_STUDIES = [
 export default function HRTechPage() {
   return (
     <>
-      <Container>
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries' },
-            { label: 'HR Tech' },
-          ]}
-        />
-      </Container>
-
       <PageHero
+        breadcrumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Industries' },
+          { label: 'HR Tech' },
+        ]}
         title="HR platforms that actually match people to opportunity."
         description="We've built multi-tenant HR platforms, AI-powered matching algorithms, and ATS integrations that process thousands of candidates."
         ctaText="Start your HR tech project"
