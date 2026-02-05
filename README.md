@@ -1,15 +1,42 @@
 # Fetchly Website
 
-Marketing website for [fetch.ly](https://www.fetch.ly), built with Next.js 16, React 19, and Tailwind CSS 4. Statically exported for GitHub Pages deployment.
+Marketing website for [fetch.ly](https://www.fetch.ly), built with Next.js 16, React 19, and Tailwind CSS 4.
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (static export)
+- **Framework:** Next.js 16 (Turbopack)
 - **Styling:** Tailwind CSS 4
 - **Animations:** GSAP, Lenis (smooth scroll)
 - **Fonts:** Inter (via `next/font`)
+- **Deployment:** Vercel
 
 ## Getting Started
+
+### Prerequisites
+
+The project depends on `@fetchly/live-sessions`, a private GitHub repository. You need SSH access configured to install it.
+
+**Option A: Local development with symlink** (recommended for active development on both repos)
+
+```bash
+# Clone live-sessions next to this repo
+cd ..
+git clone git@github.com:fc-anjos/live-sessions.git
+
+# Update package.json temporarily to use local version
+# Change: "git+ssh://git@github.com/fc-anjos/live-sessions.git"
+# To:     "file:../live-sessions"
+```
+
+**Option B: Install from GitHub** (requires SSH key with repo access)
+
+```bash
+# Ensure your SSH key is added to the GitHub repo as a deploy key
+# or you have access via your GitHub account
+npm install
+```
+
+### Setup
 
 ```bash
 npm install
@@ -23,14 +50,75 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Script | Description |
 |---|---|
-| `npm run dev` | Start dev server with hot reload |
-| `npm run build` | Static export to `out/` |
+| `npm run dev` | Start dev server with hot reload (uses webpack) |
+| `npm run build` | Production build (uses Turbopack) |
 | `npm run start` | Serve the production build locally |
 | `npm run lint` | Run ESLint |
 
-## Static Export
+### Build Scripts
 
-The site is configured with `output: "export"` for static hosting. Set `NEXT_PUBLIC_BASE_PATH` if deploying under a subpath (e.g., GitHub Pages).
+| File | Description |
+|---|---|
+| `scripts/vercel-install.sh` | Custom install script for Vercel (sets up SSH for private deps) |
+
+## Vercel Deployment
+
+### Private Dependency Setup
+
+The `@fetchly/live-sessions` package is hosted in a private GitHub repository. Vercel needs SSH access to install it during builds.
+
+#### 1. Deploy Key (already configured)
+
+A deploy key is already registered on the `fc-anjos/live-sessions` GitHub repository. The private key is stored in:
+- **AWS SSM:** `/${project_name}/github-deploy-key` (for EC2 deployment)
+- **Terraform:** `live-sessions/terraform/production.tfvars` (gitignored)
+
+#### 2. Vercel Environment Variable
+
+Add the deploy key to Vercel as a base64-encoded environment variable:
+
+| Variable | Value | Environments |
+|----------|-------|--------------|
+| `GIT_SSH_KEY` | Base64-encoded private key | Production, Preview, Development |
+
+To encode the key:
+```bash
+cat <<'EOF' | base64
+-----BEGIN OPENSSH PRIVATE KEY-----
+... (key content from production.tfvars) ...
+-----END OPENSSH PRIVATE KEY-----
+EOF
+```
+
+#### 3. How It Works
+
+The `vercel.json` configures a custom install command:
+```json
+{
+  "installCommand": "bash scripts/vercel-install.sh"
+}
+```
+
+The script (`scripts/vercel-install.sh`) decodes the SSH key and configures Git before running `npm install`:
+```bash
+echo "$GIT_SSH_KEY" | base64 -d > ~/.ssh/id_ed25519
+chmod 600 ~/.ssh/id_ed25519
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+npm install
+```
+
+### Other Environment Variables
+
+Set these in Vercel for session tracking (optional):
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_TRACKER_URL` | Live-sessions server URL (e.g., `https://sessions.fetch.ly`) |
+| `NEXT_PUBLIC_TRACKER_SITE_ID` | Site ID from live-sessions dashboard |
+
+## Static Export (GitHub Pages)
+
+For static hosting on GitHub Pages, set `NEXT_PUBLIC_BASE_PATH`:
 
 ```bash
 NEXT_PUBLIC_BASE_PATH=/fetchly-website-next npm run build

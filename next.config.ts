@@ -29,6 +29,7 @@ if (trackerUrl && !/^https?:\/\/.+/.test(trackerUrl)) {
 const nextConfig: NextConfig = {
   basePath: basePath || undefined,
   reactCompiler: true,
+  turbopack: {},
   images: {
     loaderFile: './src/lib/image-loader.ts',
   },
