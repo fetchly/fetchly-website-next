@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -13,6 +13,7 @@
     "serve:ngrok": "bash scripts/serve-ngrok.sh"
   },
   "dependencies": {
+    "@fetchly/live-sessions": "file:../live-sessions",
     "@keystatic/core": "^0.5.48",
     "@keystatic/next": "^5.0.4",
     "clsx": "^2.1.0",
