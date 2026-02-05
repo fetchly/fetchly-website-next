@@ -34,6 +34,7 @@ export interface IntakeErrors {
   companyName?: string;
   companyWebsite?: string;
   message?: string;
+  _hp?: string;
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
