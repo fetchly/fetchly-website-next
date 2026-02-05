@@ -4,14 +4,17 @@ import { useLiveChat } from '@/hooks/useLiveChat';
 import { LiveChatWidget } from './LiveChatWidget';
 
 export function LiveChatProvider() {
-  const { isOpen, messages, send, close } = useLiveChat();
+  const chat = useLiveChat();
 
   return (
     <LiveChatWidget
-      isOpen={isOpen}
-      messages={messages}
-      onSend={send}
-      onClose={close}
+      visible={chat.visible}
+      panelOpen={chat.panelOpen}
+      chatActive={chat.chatActive}
+      messages={chat.messages}
+      onSend={chat.send}
+      onTogglePanel={chat.togglePanel}
+      hasHistory={chat.hasHistory}
     />
   );
 }
